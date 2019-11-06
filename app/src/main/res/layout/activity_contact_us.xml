@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:bind="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<import type="pick.com.app.webservices.Urls"/>
+		<variable
+			name="activity"
+			type="pick.com.app.varient.user.ui.activity.ContactUsActivity"/>
+		
+		<variable
+			name="toolbar"
+			type="pick.com.app.base.model.ToolbarCustom"/>
+		
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel" />
+		
+		<variable
+			name="contact"
+			type="pick.com.app.varient.user.pojo.RegistrationModel.ContactUS" />
+	</data>
+	
+	<LinearLayout
+		
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:background="@color/ef_white"
+		android:layout_height="match_parent">
+		
+		<include layout="@layout/toolbar"
+			bind:toolbar="@{toolbar}"/>
+		
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:padding="10dp">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAllCaps="true"
+					android:text="@string/full_name"
+					android:textColor="@color/change_screen_text_color" />
+				
+				<pick.com.app.uitility.custom.CustomEditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="13sp"
+					android:enabled="false"
+					android:layout_marginTop="5dp"
+					android:inputType="textCapSentences"
+					android:padding="8dp"
+					android:text="@={user.data.dl_name}"
+					android:textColor="#353535"
+					android:textColorHint="#71353535"
+					android:background="@drawable/rect_view_editprofile" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAllCaps="true"
+					android:text="@string/email_address"
+					android:textColor="@color/change_screen_text_color" />
+				
+				<pick.com.app.uitility.custom.CustomEditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="13sp"
+					android:enabled="false"
+					android:text="@={user.data.email}"
+					
+					android:layout_marginTop="5dp"
+					android:inputType="textCapSentences"
+					android:padding="8dp"
+					android:textColor="#353535"
+					android:textColorHint="#71353535"
+					android:background="@drawable/rect_view_editprofile" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAllCaps="true"
+					android:text="@string/mobile_number"
+					android:textColor="@color/change_screen_text_color" />
+				
+				<pick.com.app.uitility.custom.CustomEditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="13sp"
+					android:enabled="false"
+					android:text="@={user.data.contact_number}"
+					
+					android:layout_marginTop="5dp"
+					android:inputType="textCapSentences"
+					android:padding="8dp"
+					android:textColor="#353535"
+					android:textColorHint="#71353535"
+					android:background="@drawable/rect_view_editprofile" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAllCaps="true"
+					android:text="@string/message"
+					android:textColor="@color/change_screen_text_color" />
+				
+				<pick.com.app.uitility.custom.CustomEditText
+					android:layout_width="match_parent"
+					android:layout_height="150dp"
+					android:textSize="13sp"
+					android:enabled="false"
+					android:gravity="top"
+					android:hint="@string/message"
+					android:text="@={user.data.message}"
+					
+					android:layout_marginTop="5dp"
+					android:inputType="textCapSentences"
+					android:padding="8dp"
+					android:textColor="#353535"
+					android:textColorHint="#71353535"
+					android:background="@drawable/rect_view_editprofile" />
+				
+				<pick.com.app.uitility.custom.RoundButton
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:gravity="center"
+					android:paddingStart="8dp"
+					android:paddingEnd="8dp"
+					android:onClick="@{(view)->activity.submitQuery(`save_contact_us`,view)}"
+					android:textStyle="bold"
+					android:text="@string/submit"
+					app:rb_animation_alpha="true"
+					app:rb_animation_duration="500"
+					app:rb_background_color="#1DA1F2"
+					app:rb_background_color_pressed="#0B5D8E"
+					app:rb_corner_radius="3dp"
+					app:rb_corner_width="1dp"
+					app:rb_text_color="@android:color/white"
+					app:rb_text_color_pressed="@android:color/white" />
+				/>
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_marginTop="10dp"
+					android:padding="10dp"
+					android:background="@drawable/rect_view_editprofile">
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="5dp"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/factory"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:text="@{contact.company_name}"
+							android:layout_marginStart="10dp"/>
+					</LinearLayout>
+					
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/view_color"
+						android:layout_marginTop="10dp"/>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="5dp"
+						android:layout_marginTop="10dp"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/location"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:text="@{contact.address}"
+							
+							android:layout_marginStart="10dp"/>
+					</LinearLayout>
+					
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/view_color"
+						android:layout_marginTop="10dp"/>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="5dp"
+						android:layout_marginTop="10dp"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/email"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:text="@{contact.email}"
+							
+							android:layout_marginStart="10dp"/>
+					</LinearLayout>
+					
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/view_color"
+						android:layout_marginTop="10dp"/>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="5dp"
+						android:layout_marginTop="10dp"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/call"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:text="@{contact.contact_number}"
+							
+							android:layout_marginStart="10dp"/>
+					</LinearLayout>
+					
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/view_color"
+						android:layout_marginTop="10dp"/>
+				</LinearLayout>
+			</LinearLayout>
+		</androidx.core.widget.NestedScrollView>
+		
+		
+	</LinearLayout>
+
+</layout>

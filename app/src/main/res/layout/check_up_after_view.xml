@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+	</data>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<TextView
+			android:layout_width="match_parent"
+			android:background="@color/profile_top_back_color"
+			android:textColor="@color/ef_white"
+			android:text="@string/check_up_after"
+			android:textAllCaps="true"
+			android:padding="10dp"
+			android:layout_height="wrap_content" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_margin="5dp"
+			android:padding="7sp"
+			android:background="@drawable/rect_view_light_gray"
+			android:layout_height="wrap_content">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:padding="10dp"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_weight=".1"
+					android:text="@string/fuel_amount_after_drop_off"
+					android:layout_height="wrap_content" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Liters"
+					
+					android:text='@{@string/amointinSar(user.after_pickup_detail.fuel_amount)}'
+					
+					
+					android:paddingEnd="10dp"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="@color/ef_grey" />
+			
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:padding="10dp"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_weight=".1"
+					android:text="@string/after_drop_off_kilometer"
+					android:layout_height="wrap_content" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Km"
+					android:text='@{@string/fuelkm(user.after_pickup_detail.kilometer)}'
+					
+					android:paddingEnd="10dp"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:paddingStart="10dp"
+				android:paddingTop="10dp"
+				android:text="@string/after_drop_off_car_images"
+				android:layout_height="wrap_content" />
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycleview_check_afterView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				
+				
+				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+				tools:listitem="@layout/custom_image_booking_details"
+				app:spanCount="5">
+			
+			</androidx.recyclerview.widget.RecyclerView>
+			
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycleview_asseries_check_afterView"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				
+				
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				tools:listitem="@layout/custom_user_view_asseries"
+				app:spanCount="5">
+			
+			</androidx.recyclerview.widget.RecyclerView>
+		
+		
+		</LinearLayout>
+	
+	</LinearLayout>
+</layout>

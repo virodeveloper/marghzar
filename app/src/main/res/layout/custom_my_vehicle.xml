@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<import type="android.view.View"/>
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.VehicleModel.Data"/>
+	
+	
+	
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/ef_white"
+		
+		android:orientation="vertical"
+		android:paddingBottom="10dp">
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/ef_grey" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			
+			<RelativeLayout
+				android:layout_width="110dp"
+				
+				android:layout_height="120dp">
+				
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:scaleType="centerCrop"
+					app:loadImageData='@{user.upload_url +"vehicle_images/"+ user.vehicle_image }'
+					android:src="@drawable/placeholder" />
+				
+				<TextView
+					android:layout_width="35dp"
+					android:layout_margin="2dp"
+					app:gotoEdit="@{user}"
+					android:layout_height="wrap_content"
+					android:visibility="gone"
+					android:layout_alignParentTop="true"
+					android:background="@color/skyblue"
+					android:gravity="center"
+					android:padding="5dp"
+					android:text="@string/edit"
+					android:textColor="@color/ef_white"
+					android:textSize="8sp" />
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					
+					android:layout_marginBottom="@dimen/_3sdp"
+					android:gravity="center">
+					
+					<de.hdodenhof.circleimageview.CircleImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:onClick="editBandDetails"
+						android:src="@drawable/edit"
+						app:gotoEdit="@{user}" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/delete"
+						app:gotoDelete="@{user}" />
+				</LinearLayout>
+			
+			
+			</RelativeLayout>
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight=".2"
+				android:background="#fff">
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					
+					android:layout_height="match_parent"
+					
+					
+					android:orientation="vertical">
+					
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="#fff"
+						android:paddingStart="5dp">
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight=".1"
+							tools:text="Jayden Ethan"
+							android:text="@{user.model_name}"
+							android:textColor="@color/profile_top_back_color"
+							android:textSize="13sp" />
+						
+						
+						<androidx.appcompat.widget.SwitchCompat
+							android:layout_width="wrap_content"
+							android:focusable="false"
+							android:clickable="false"
+						
+							app:onchangeSwithc="@{user}"
+							
+							android:layout_height="wrap_content" />
+					
+					</LinearLayout>
+					
+				
+					
+				
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="#fff"
+						android:paddingStart="5dp">
+						
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_weight=".5"
+							android:gravity="center_vertical"
+							android:orientation="vertical">
+							
+							<LinearLayout
+								android:layout_width="wrap_content"
+								android:gravity="center_vertical"
+								android:layout_height="wrap_content">
+								
+								<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="match_parent"
+									android:text='@{user.vehicle_charges_one_day+" SAR"}'
+									android:textColor="@color/skyblue"
+									android:textSize="13sp"
+									android:textStyle="bold"
+									android:layout_marginEnd="@dimen/_3sdp"
+									
+									tools:text="100 SAR" />
+								
+								<View
+									android:layout_width="1dp"
+									android:background="@color/ef_grey"
+									android:layout_height="13dp" />
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:ellipsize="end"
+								android:maxLines="3"
+								android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.GONE}"
+								android:paddingStart="5dp"
+								android:textColor="@color/profile_top_back_color"
+								tools:text="free KM 250 km"
+								android:text='@{@string/free_km_with_value(user.one_day_free_kilometer)}'
+								android:textSize="12sp" />
+							</LinearLayout>
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:ellipsize="end"
+								android:maxLines="3"
+								android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.GONE}"
+								
+								tools:text="Excess 50 SAR/Km"
+								android:text='@{@string/excess_value(user.per_kilometer_charge)}'
+								android:textSize="11sp" />
+						
+						
+						</LinearLayout>
+						
+						
+						
+					</LinearLayout>
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						
+						android:layout_weight=".5"
+						android:gravity="left|center_vertical"
+						android:orientation="horizontal"
+						android:paddingStart="5dp">
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_weight=".1"
+							android:layout_height="wrap_content"
+							android:text="@string/insurance_policy"
+							android:textColor="@color/profile_top_back_color"
+							android:textAllCaps="true"
+							
+							android:textSize="12sp" />
+						
+						<Button
+							android:layout_width="55dp"
+							android:text="@string/view_text_show"
+							app:viewPolocy="@{user}"
+							android:textSize="12sp"
+							android:layout_marginEnd="10dp"
+							android:textColor="@color/ef_white"
+							android:background="@color/skyblue"
+							android:layout_height="25dp" />
+					
+					</LinearLayout>
+				
+				</LinearLayout>
+			</LinearLayout>
+		
+		
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/ef_grey" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:background="#fff"
+			android:paddingStart="5dp">
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="5 Seater"
+				android:text='@{user.seater+" Seater"}'
+				
+				android:textSize="11sp" />
+			
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:layout_marginBottom="3dp"
+				android:layout_marginTop="3dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="2016 Model"
+				android:text='@{user.vehicle_year+" Model"}'
+				
+				
+				android:textSize="11sp" />
+			
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:layout_marginBottom="3dp"
+				android:layout_marginTop="3dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="Small,Hatchback"
+				android:text='@{user.vehicle_type_name+","+user.vehicle_subtype_name}'
+				
+				android:textSize="11sp" />
+			
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:layout_marginBottom="3dp"
+				android:layout_marginTop="3dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="Manual"
+				android:text='@{user.vehicle_transmission_title}'
+				
+				android:textSize="11sp" />
+			
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:layout_marginBottom="3dp"
+				android:layout_marginTop="3dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/diesel"
+				android:textSize="11sp" />
+		
+		
+		</LinearLayout>
+		
+		
+		
+		<androidx.recyclerview.widget.RecyclerView
+			android:layout_width="match_parent"
+			tools:listitem="@layout/custom_week_layout"
+			app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+			app:spanCount="3"
+			android:background="#C8C8CE"
+			app:setRecyclerView="@{user}"
+			android:layout_height="wrap_content"/>
+		
+		
+	</LinearLayout>
+</layout>

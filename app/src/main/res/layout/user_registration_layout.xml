@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:bind="http://schemas.android.com/tools"
+	
+	>
+	
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="activity"
+			type="pick.com.app.varient.user.ui.activity.RegistrationActivity"/>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+	</data>
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+	<LinearLayout
+		android:gravity="center_horizontal"
+		android:background="@drawable/bg"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<include layout="@layout/registration_header" bind:user="@{user}"/>
+		
+		<pick.com.app.uitility.custom.CustomEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="25dp"
+			android:layout_marginRight="20dp"
+			android:hint="@string/name_as_on_driving"
+			android:text="@={user.data.dl_name}"
+			android:inputType="textCapSentences"
+			android:padding="8dp"
+			android:textSize="13sp"
+			android:textColor="@color/ef_white"
+			android:textColorHint="#B6C6C1C1"
+			app:libIZO_setBorderColor="#FFFFFF"
+			app:libIZO_setBorderView="true"
+			app:libIZO_setCornerRadius="3dp" />
+		
+		<pick.com.app.uitility.custom.CustomEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="20dp"
+			android:hint="@string/enter_email_address"
+			
+			android:text="@={user.data.email}"
+			android:inputType="textEmailAddress"
+			android:padding="8dp"
+			android:textSize="13sp"
+			android:textColor="@color/ef_white"
+			android:textColorHint="#B6C6C1C1"
+			app:libIZO_setBorderColor="#FFFFFF"
+			app:libIZO_setBorderView="true"
+			app:libIZO_setCornerRadius="3dp" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:gravity="center_vertical"
+			android:background="@drawable/rect_view"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="20dp">
+
+<!--			<com.hbb20.CountryCodePicker-->
+<!--				android:layout_width="wrap_content"-->
+<!--				android:layout_height="match_parent"-->
+<!--				android:id="@+id/cou"-->
+<!--				app:ccp_defaultNameCode="US"-->
+
+<!--				/>-->
+
+			<TextView
+				android:layout_width="wrap_content"
+
+				android:text='@{"+"+user.data.country_code+" -"}'
+
+				android:paddingEnd="10dp"
+				android:paddingStart="10dp"
+
+				android:onClick="@{(theView) -> activity.goToCountryCode()}"
+				android:textSize="13sp"
+				android:textColor="@color/ef_white"
+				android:layout_height="wrap_content" />
+			
+			<pick.com.app.uitility.custom.CustomEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="13sp"
+				android:hint="@string/enter_mobile_number"
+				android:text="@={user.data.contact_number}"
+				android:inputType="number"
+				android:padding="8dp"
+				
+				
+				
+				
+				
+				android:textColor="@color/ef_white"
+				android:textColorHint="#B6C6C1C1"
+				
+				
+				android:background="@null"
+				
+				/>
+		
+		</LinearLayout>
+		<pick.com.app.uitility.custom.CustomEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="20dp"
+			android:hint="@string/driving_license_number"
+			android:text="@={user.data.drivingLisenceNo}"
+			android:inputType="text"
+			android:padding="8dp"
+			android:textSize="13sp"
+			android:textColor="@color/ef_white"
+			android:textColorHint="#B6C6C1C1"
+			app:libIZO_setBorderColor="#FFFFFF"
+			app:libIZO_setBorderView="true"
+			app:libIZO_setCornerRadius="3dp" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="43dp"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="20dp"
+			android:background="@drawable/rect_view"
+			android:orientation="horizontal"
+			android:gravity="center_vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight=".1"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:textSize="13sp"
+				android:text="@{user.data.drivingLisencePic.name}"
+				android:hint="@string/upload_license"
+				android:textColorHint="#B6C6C1C1"
+				android:textColor="#B6C6C1C1"/>
+			
+		
+		
+			<pick.com.app.uitility.custom.RoundButton
+				android:layout_width="120dp"
+				android:layout_height="match_parent"
+				android:gravity="center"
+				android:layout_margin="4dp"
+				android:text="@string/upload"
+				android:onClick='@{()->activity.showImagepicker("lisence")}'
+				android:textSize="10sp"
+				app:rb_background_color="#1DA1F2"
+				app:rb_background_color_pressed="#0B5D8E"
+				app:rb_corner_color="@color/ef_white"
+				app:rb_corner_radius="5dp"
+				app:rb_corner_width="1dp"
+				app:rb_text_color="@android:color/white"
+				app:rb_text_color_pressed="@android:color/white" />
+		
+		</LinearLayout>
+		
+		<LinearLayout
+			android:visibility="@{user.data.isLisancePreview() ? View.VISIBLE : View.GONE}"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+		
+		<RelativeLayout
+			android:layout_marginStart="25dp"
+			android:layout_marginTop="10dp"
+			
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+		<ImageView
+			android:id="@+id/lisence_image"
+			android:layout_width="80dp"
+			android:scaleType="fitXY"
+			android:src="@color/ef_white"
+			android:layout_marginTop="10dp"
+			android:layout_height="80dp" />
+			
+			<ImageView
+				android:onClick="removePreview"
+				android:layout_width="wrap_content"
+				android:layout_marginStart="65dp"
+				android:id="@+id/imageViewPreviewClose"
+				android:src="@drawable/com_facebook_close"
+				android:layout_height="wrap_content" />
+		
+		</RelativeLayout>
+		</LinearLayout>
+		<pick.com.app.uitility.custom.CustomEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="20dp"
+			android:hint="@string/enter_password"
+			android:maxLength="20"
+			android:text="@={user.data.password}"
+			android:inputType="textPassword"
+			android:textSize="13sp"
+			android:padding="8dp"
+			android:textColor="@color/ef_white"
+			android:textColorHint="#B6C6C1C1"
+			app:libIZO_setBorderColor="#FFFFFF"
+			app:libIZO_setBorderView="true"
+			app:libIZO_setCornerRadius="3dp" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:orientation="horizontal"
+			android:layout_margin="20dp"
+			android:gravity="center_vertical"
+			android:layout_height="wrap_content">
+			
+			
+			<androidx.appcompat.widget.AppCompatCheckBox
+				android:layout_width="wrap_content"
+				
+				android:textSize="10sp"
+				app:onUserCheckedChange="@{user}"
+				
+				android:textColor="@color/ef_white"
+				
+				android:layout_height="wrap_content" />
+		<TextView
+			
+			app:setLinkSetting="@{user}"
+			android:layout_width="wrap_content"
+			android:text="@string/i_accept_the_terms_amp_contition_and_privacy_policy"
+			android:gravity="center_vertical"
+			android:textColor="@color/ef_white"
+			android:textSize="10sp"
+			android:layout_height="wrap_content" />
+		
+		
+		</LinearLayout>
+		
+		<include layout="@layout/registration_footer" bind:user="@{user}" />
+	
+	</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+</layout>

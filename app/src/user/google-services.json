@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "836886303343",
+    "firebase_url": "https://pick-1547623284996.firebaseio.com",
+    "project_id": "pick-1547623284996",
+    "storage_bucket": "pick-1547623284996.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836886303343:android:edcfd02fec0e0085",
+        "android_client_info": {
+          "package_name": "pick.com.app.owner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836886303343-e11m0cljvhbg33gbl879qeau3erqqcur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzV-sOfnOj_oSIrfE46iEAI6W2tLHlCQg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836886303343:android:48f159ad3424beb7",
+        "android_client_info": {
+          "package_name": "pick.com.app.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836886303343-plkfn2noq18stdbihq07dboepqd4f3o9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pick.com.app.user",
+            "certificate_hash": "3914633c0c2b1f1f6b9afca34cd8474358d4e4b4"
+          }
+        },
+        {
+          "client_id": "836886303343-ea7c04622nvsf1n3ppbq8p8a6bnl51c4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pick.com.app.user",
+            "certificate_hash": "38c5120a83175ffc090f6875228b8534ec48d63b"
+          }
+        },
+        {
+          "client_id": "836886303343-e11m0cljvhbg33gbl879qeau3erqqcur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzV-sOfnOj_oSIrfE46iEAI6W2tLHlCQg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836886303343-e11m0cljvhbg33gbl879qeau3erqqcur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "836886303343-g2q0jfrumk2vo4392fffdip9vv6kapr0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "endive-software.Pick"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

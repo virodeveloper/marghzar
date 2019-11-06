@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<import type="android.view.View" />
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data" />
+	</data>
+	
+	<LinearLayout
+		android:id="@+id/row_click"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/ef_white"
+		android:orientation="vertical">
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			
+			<RelativeLayout
+				android:layout_width="@dimen/_110sdp"
+				android:layout_height="@dimen/_110sdp">
+				
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:scaleType="centerCrop"
+					app:loadImage='@{user.upload_url +"profile_pic/"+ user.user_data.profile_pic }'
+					
+					android:src="@drawable/placeholder" />
+				
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:background="#B6000000"
+					android:gravity="center"
+					android:padding="3dp"
+					tool:text="+919001638910"
+					android:text="@{user.user_data.contact_number}"
+					android:textColor="@color/ef_white"
+					android:textSize="10sp" />
+			
+			</RelativeLayout>
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight=".2">
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical">
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:layout_marginStart="5dp">
+						
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							tool:text="Jayden Ethan"
+							android:text="@{user.user_data.name}"
+							android:textColor="@color/black"
+							android:textSize="13sp" />
+
+					
+					</LinearLayout>
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="5dp"
+						tool:text="#BGNHY2503"
+						android:text='@{"#"+user.booking_id}'
+						android:textColor="@color/skyblue"
+						android:textSize="12sp" />
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+						android:orientation="horizontal">
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="5dp"
+							android:layout_weight=".4"
+							android:orientation="horizontal"
+							android:paddingBottom="5dp">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								tool:text="Free Km 250 km"
+								android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.GONE}"
+								android:text='@{@string/free_km_with_value(user.one_day_free_kilometer)}'
+								android:textColor="@color/black"
+								android:textSize="11sp" />
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginStart="2dp"
+								tool:text="Excess 50 SAR/Km"
+								android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.GONE}"
+								android:text='@{@string/excess_value(user.per_kilometer_charge)}'
+								android:textColor="@color/gray_btn_bg_pressed_color"
+								android:textSize="11sp" />
+						
+						</LinearLayout>
+					
+					</LinearLayout>
+					
+					
+					<androidx.appcompat.widget.AppCompatButton
+						android:layout_width="wrap_content"
+						android:layout_height="30dp"
+						android:layout_marginStart="5dp"
+						android:layout_marginTop="5dp"
+						android:background="#1DA1F2"
+						android:elevation="5dp"
+						android:padding="7dp"
+						android:text="@{user.getStatusById(user.booking_status)}"
+						android:textColor="@color/ef_white"
+						android:textSize="8sp"
+						android:visibility="@{user.getshow_accept_reject(user) ? View.GONE : View.VISIBLE}" />
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:gravity="bottom"
+						android:paddingStart="5dp"
+						android:visibility="@{user.getshow_accept_reject(user) ? View.VISIBLE : View.GONE}">
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="40dp"
+							app:layoutname='@{"owner_new_booking_request"}'
+							app:manageLayout="@{user}">
+							
+							<androidx.appcompat.widget.AppCompatButton
+								android:layout_width="0dp"
+								android:layout_height="match_parent"
+								android:layout_weight=".1"
+								app:acceptReject="@{user}"
+								app:status='@{"1"}'
+								android:background="#1DA1F2"
+								android:elevation="5dp"
+								android:padding="7dp"
+								android:text="@string/accept"
+								android:textColor="@color/ef_white"
+								android:textSize="14sp" />
+							
+							<androidx.appcompat.widget.AppCompatButton
+								android:layout_width="0dp"
+								android:layout_height="match_parent"
+								android:layout_weight=".1"
+								android:background="#27272C"
+								android:elevation="5dp"
+								android:padding="7dp"
+								android:text="@string/reject"
+								app:acceptReject="@{user}"
+								app:status='@{"10"}'
+								android:textColor="@color/ef_white"
+								android:textSize="14sp" />
+						</LinearLayout>
+					
+					</LinearLayout>
+				
+				
+				</LinearLayout>
+			</LinearLayout>
+		
+		
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+		
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp">
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/total_amount_received_by_owner"
+				android:textSize="11sp" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="2dp"
+				tool:text="800 SAR"
+				android:text='@{user.payable_amount+" SAR"}'
+				android:textColor="@color/skyblue"
+				android:textSize="15dp"
+				android:textStyle="bold" />
+		</LinearLayout>
+		
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			
+			android:paddingStart="5dp">
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight=".5"
+				android:padding="@dimen/_5sdp"
+				android:orientation="vertical"
+				>
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					tool:text="Pickup Address"
+					android:text="@{user.isDifferentCity(user.is_different_city_drop) ?@string/pick_up_address:@string/pick_up_drop_address}"
+					
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					android:textStyle="bold" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+				
+				app:setMAxLineEllipse="@{user}"
+					android:text="@{user.pick_address}"
+					
+					tool:text="A-68,69 Sundejghhjghjghjghjghjggjghjghjghjghjgkhkjhkjhkjhkjhgfdgdfgpdfgdfgkdf;lkfdkgdfk;glkdfg;lkdf;lgkdf;lgk;ldfkgfkg;lfkg;lfkg;lfdk;lkr Singh Bhandari Nagar, Swej Farm, Sodala, Jaipur, Rajasthan 302019"
+					android:textSize="12sp" />
+			
+			
+			</LinearLayout>
+			
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:visibility="@{user.isDifferentCity(user.is_different_city_drop) ?View.VISIBLE:View.GONE}"
+				
+				android:background="@color/gray_btn_bg_color"/>
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight=".5"
+				android:visibility="@{user.isDifferentCity(user.is_different_city_drop) ?View.VISIBLE:View.GONE}"
+				android:padding="@dimen/_5sdp"
+				android:orientation="vertical"
+				>
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/drop_address"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					android:textStyle="bold" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:setMAxLineEllipse="@{user}"
+					
+					android:text="@{user.drop_address}"
+					
+					tool:text="A-68,69 Sunder Singh Bhandari Nagar, Swej Farm, Sodala, Jaipur, Rajasthan 302019"
+					android:textSize="12sp" />
+			
+			
+			</LinearLayout>
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+		
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight=".1"
+				android:gravity="center_vertical"
+				android:orientation="vertical"
+				
+				android:paddingStart="10dp">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingTop="5dp"
+					android:text="@string/pickup_time"
+					android:textSize="10sp" />
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					
+					android:gravity="center_vertical">
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						tool:text="12"
+						android:text='@{user.getFormatedDAte(user.from_date_time,"DAY")}'
+						android:textColor="@color/profile_top_back_color"
+						android:textSize="25sp"
+						android:textStyle="bold" />
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center_vertical"
+						android:orientation="vertical"
+						android:paddingStart="4dp">
+						
+						
+						<TextView
+							
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							tool:text="JUNE"
+							android:text='@{user.getFormatedDAte(user.from_date_time,"Month")}'
+							android:textColor="@color/profile_top_back_color"
+							android:textSize="10sp" />
+						
+						<TextView
+							
+							android:layout_width="wrap_content"
+							
+							android:layout_height="wrap_content"
+							
+							android:text='@{user.getFormatedDAte(user.from_date_time,"Time")}'
+							
+							tool:text="3:30 PM"
+							android:textSize="10sp" />
+					</LinearLayout>
+				
+				</LinearLayout>
+			
+			</LinearLayout>
+			
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:src="@drawable/date_arrow" />
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight=".1"
+				android:gravity="center_vertical"
+				android:orientation="vertical"
+				android:paddingStart="5dp">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingTop="5dp"
+					android:text="@string/drop_off_time"
+					android:textSize="10sp" />
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					
+					android:gravity="center_vertical">
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						tool:text="22"
+						android:text='@{user.getFormatedDAte(user.to_date_time,"DAY")}'
+						
+						android:textColor="@color/profile_top_back_color"
+						android:textSize="25sp"
+						android:textStyle="bold" />
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center_vertical"
+						android:orientation="vertical"
+						android:paddingStart="4dp">
+						
+						
+						<TextView
+							android:id="@+id/textView"
+							android:layout_width="wrap_content"
+							android:layout_height="match_parent"
+							tool:text="MAY"
+							android:text='@{user.getFormatedDAte(user.to_date_time,"Month")}'
+							
+							android:textColor="@color/profile_top_back_color"
+							android:textSize="10sp" />
+						
+						<TextView
+							
+							android:layout_width="wrap_content"
+							
+							android:layout_height="wrap_content"
+							
+							android:text='@{user.getFormatedDAte(user.to_date_time,"Time")}'
+							
+							tool:text="4:45 PM"
+							android:textSize="10sp" />
+					</LinearLayout>
+				
+				</LinearLayout>
+			
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".15"
+				app:manageExtended="@{user}"
+				
+				android:layout_height="wrap_content">
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:src="@drawable/date_arrow" />
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:gravity="center_vertical"
+					android:orientation="vertical"
+					android:paddingStart="5dp">
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:paddingTop="5dp"
+						android:text="@string/extended_date"
+						android:textAllCaps="true"
+						android:textSize="10sp" />
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						
+						android:gravity="center_vertical">
+						
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							tool:text="22"
+							android:text='@{user.getFormatedDAte(user.extended_date_time,"DAY")}'
+							
+							android:textColor="@color/profile_top_back_color"
+							android:textSize="25sp"
+							android:textStyle="bold" />
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:gravity="center_vertical"
+							android:orientation="vertical"
+							android:paddingStart="4dp">
+							
+							
+							<TextView
+								
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								tool:text="MAY"
+								android:text='@{user.getFormatedDAte(user.extended_date_time,"Month")}'
+								
+								android:textColor="@color/profile_top_back_color"
+								android:textSize="10sp" />
+							
+							<TextView
+								android:id="@+id/textView3"
+								android:layout_width="wrap_content"
+								
+								android:layout_height="wrap_content"
+								
+								android:text='@{user.getFormatedDAte(user.extended_date_time,"Time")}'
+								
+								tool:text="4:45 PM"
+								android:textSize="10sp" />
+						</LinearLayout>
+					
+					</LinearLayout>
+				
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="#F1F1F1"
+			android:gravity="center_vertical"
+			android:padding="7dp">
+			
+			<ImageView
+				android:layout_width="45dp"
+				android:layout_height="40dp"
+				android:scaleType="centerCrop"
+				app:loadImageData='@{user.upload_url +"vehicle_images/"+ user.vehicle_image }'
+				
+				android:src="@drawable/dummu" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingStart="10dp"
+				tool:text="Hyundai Creta SX 1.6 CRDi 2018"
+				android:text='@{user.vehicle_model+" "+user.vehicle_year }'
+				android:textColor="@color/profile_top_back_color" />
+			<TextView
+				android:layout_width="@dimen/_100sdp"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/_10sdp"
+
+				android:text="AutoCancellation time:15m"
+				android:textColor="@color/black"
+				android:textSize="13sp" />
+
+		
+		</LinearLayout>
+		
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/gray_btn_bg_color" />
+	</LinearLayout>
+
+</layout>

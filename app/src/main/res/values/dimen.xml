@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<dimen name="popup_width">320dp</dimen>
+	<dimen name="popup_height">500dp</dimen>
+	<dimen name="card_insets">1dp</dimen>
+</resources>

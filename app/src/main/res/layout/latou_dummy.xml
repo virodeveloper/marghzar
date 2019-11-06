@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data" />
+	
+	</data>
+	
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			
+			android:orientation="vertical">
+			
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				
+				app:manageLayout="@{user}"
+				app:layoutname='@{"check_up_before_fill_form"}'>
+				
+				<include layout="@layout/check_up_before_fill_form" />
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				
+				app:manageLayout="@{user}"
+				app:layoutname='@{"check_up_before_view_user"}'
+				android:layout_height="wrap_content">
+			
+			<include
+				layout="@layout/check_up_before_view_user"
+				 />
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				
+				app:manageLayout="@{user}"
+				app:layoutname='@{"check_up_after_fill_form"}'
+				android:layout_height="wrap_content"
+				
+				>
+			<include
+				layout="@layout/check_up_after_fill_form"
+				 />
+			
+			</LinearLayout>
+		</LinearLayout>
+	
+	</androidx.core.widget.NestedScrollView>
+</layout>

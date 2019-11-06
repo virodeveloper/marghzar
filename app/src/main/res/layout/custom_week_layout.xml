@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.VehicleModel.Data.BulkAvailability"/>
+	
+	</data>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:layout_height="wrap_content">
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:padding="15dp"
+		
+		android:layout_height="wrap_content"
+		android:background="#E9E9E9">
+		
+		<TextView
+			android:layout_width="wrap_content"
+			tools:text="For one Week"
+			android:text="@{user.avail_name}"
+			android:textSize="12sp"
+			android:textAllCaps="true"
+			android:textColor="@color/profile_top_back_color"
+			android:layout_height="wrap_content" />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			tools:text="5600 SAR"
+			android:text='@{@string/amointinSar(user.getPriceToDouble(user.avail_price))}'
+			
+ 		
+			
+			android:textAllCaps="true"
+			android:textSize="16sp"
+			android:textColor="@color/skyblue"
+			android:layout_height="wrap_content" />
+		
+		<TextView
+			
+			android:layout_width="wrap_content"
+			tools:text="(800 SAR/Day)"
+			android:text='@{@string/amountperday(user.getPerdayPrice(user))}'
+			
+			android:textAllCaps="true"
+			android:textSize="10sp"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+	</LinearLayout>
+</layout>

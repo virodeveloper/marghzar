@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data.BeforePickupDetail.AsseriesData"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		
+		android:background="#F4F4F4"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:padding="15dp"
+			android:layout_height="wrap_content">
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_weight=".1"
+				
+				tools:text="Smart Car Charger"
+				android:text="@{user.name}"
+				android:layout_height="wrap_content" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				tools:text="1"
+				android:text="@{user.quantity}"
+				
+				android:textColor="@color/skyblue"
+				android:layout_height="wrap_content" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				tools:text="/250 Sar"
+				android:text='@{@string/sarwithvalue(user.value)}'
+				
+				
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginEnd="10dp"
+			android:background="#878484" />
+	</LinearLayout>
+</layout>

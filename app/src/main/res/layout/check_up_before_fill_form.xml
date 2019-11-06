@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+	
+	
+	</data>
+	
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:orientation="vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/profile_top_back_color"
+				android:padding="10dp"
+				android:text="@string/checkup_before"
+				android:textAllCaps="true"
+				android:textColor="@color/ef_white" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content"
+				android:padding="10dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".5"
+					android:text="@string/fuel_amount_before_pick_up" />
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".3"
+					
+					android:orientation="horizontal"
+					android:gravity="right|center_vertical"
+					android:background="@drawable/rect_view_editprofile">
+					
+					
+					<EditText
+						android:layout_width="0dp"
+						android:layout_weight=".1"
+						android:background="@null"
+						android:text="@={user.fuel_amount}"
+						android:inputType="number"
+						android:layout_height="@dimen/_25sdp"
+						android:focusableInTouchMode="true"
+						android:gravity="right|center_vertical"
+						android:textSize="13sp"
+						android:hint="@string/Liters" />
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:text="@string/Liters"
+						android:textSize="13sp"
+						android:paddingStart="5dp"
+						android:paddingEnd="5dp"
+						android:layout_height="wrap_content" />
+				
+				</LinearLayout>
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="@color/ef_grey" />
+			
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".5"
+					android:text="@string/before_drop_up_kilometer" />
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".3"
+					android:orientation="horizontal"
+					android:gravity="right|center_vertical"
+					android:background="@drawable/rect_view_editprofile">
+					
+					
+					<EditText
+						android:layout_width="0dp"
+						android:layout_weight=".1"
+						android:background="@null"
+						android:layout_height="@dimen/_25sdp"
+						android:text="@={user.kilometer}"
+						android:inputType="number"
+						
+						android:gravity="right|center_vertical"
+						android:textSize="13sp"
+						 />
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:text="@string/km"
+						android:textSize="13sp"
+						android:paddingStart="5dp"
+						android:paddingEnd="5dp"
+						android:layout_height="wrap_content" />
+				
+				</LinearLayout>
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="@color/ef_grey" />
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingStart="10dp"
+				android:paddingTop="10dp"
+				android:text="@string/before_pickup_car_picture" />
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycleview_before_chekc"
+				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+				app:spanCount="5"
+				
+				android:layout_margin="5dp"
+				tools:listitem="@layout/custom_image_booking_details"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+			
+			</androidx.recyclerview.widget.RecyclerView>
+			
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycleviewAddasseries_before_chekc"
+				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+				app:spanCount="1"
+				
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+			
+			</androidx.recyclerview.widget.RecyclerView>
+		
+		
+		</LinearLayout>
+	
+	</androidx.core.widget.NestedScrollView>
+</layout>

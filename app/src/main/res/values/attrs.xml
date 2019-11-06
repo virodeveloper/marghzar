@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<declare-styleable name="TextViewCorner">
+		<attr name="bgColor" format="color"/>
+		<attr name="topLeftCorner" format="dimension"/>
+		<attr name="topRightCorner" format="dimension"/>
+		<attr name="bottomRightCorner" format="dimension"/>
+		<attr name="bottomLeftCorner" format="dimension"/>
+		<attr name="allCorner" format="dimension"/>
+	</declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="android:inputType" />
+        <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingBottom" />
+        <attr name="libIZO_setBackgroundColor" format="color" />
+        <attr name="libIZO_setBorderColor" format="color" />
+        <attr name="libIZO_setBorderView" format="boolean" />
+        <attr name="libIZO_setFont" format="string" />
+        <attr name="libIZO_setStrokeWidth" format="dimension" />
+        <attr name="libIZO_setCornerRadius" format="dimension" />
+        <attr name="libIZO_setClearIconVisible" format="boolean" />
+        <attr name="libIZO_clearIconTint" format="color" />
+        <attr name="libIZO_hideShowPasswordIconTint" format="color" />
+        <attr name="libIZO_setPrefix" format="string" />
+        <attr name="libIZO_setPrefixTextColor" format="color" />
+    </declare-styleable>
+    
+    <declare-styleable name="CircleProgresddddsBar"><attr format="color" name="progressColor"/><attr format="color" name="backgroundColor"/><attr format="float" name="backgroundWidth"/><attr format="boolean" name="roundedCorners"/><attr format="float" name="maxValue"/><attr format="color" name="progressTextColor"/><attr format="dimension" name="textSize"/><attr format="string" name="progressText"/><attr format="string" name="suffix"/><attr format="string" name="prefix"/></declare-styleable>
+    
+    <declare-styleable name="RoundButton">
+        <attr name="rb_animation_duration" format="integer" />
+        <attr name="rb_animation_corner_radius" format="dimension" />
+        <attr name="rb_animation_alpha" format="boolean" />
+        <attr name="rb_animation_progress_color" format="color" />
+        <attr name="rb_animation_progress_padding" format="dimension" />
+        <attr name="rb_animation_progress_width" format="dimension" />
+        <attr name="rb_animation_progress_style" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="dots" value="1" />
+            <enum name="custom" value="2" />
+        </attr>
+        <attr name="rb_animation_custom_resource" format="reference" />
+        <attr name="rb_animation_inner_resource" format="reference" />
+        <attr name="rb_animation_inner_resource_color" format="color" />
+        
+        <attr name="rb_success_color" format="color" />
+        <attr name="rb_success_resource" format="reference" />
+        <attr name="rb_failure_color" format="color" />
+        <attr name="rb_failure_resource" format="reference" />
+        
+        <attr name="rb_corner_radius" format="dimension" />
+        <attr name="rb_corner_width" format="dimension" />
+        <attr name="rb_corner_color" format="color" />
+        <attr name="rb_corner_color_pressed" format="color" />
+        <attr name="rb_corner_color_disabled" format="color" />
+        <attr name="rb_background_color" format="color" />
+        <attr name="rb_background_color_pressed" format="color" />
+        <attr name="rb_background_color_disabled" format="color" />
+        <attr name="rb_text_color" format="color" />
+        <attr name="rb_text_color_pressed" format="color" />
+        <attr name="rb_text_color_disabled" format="color" />
+    </declare-styleable>
+
+</resources>

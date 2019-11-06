@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel.Data.Locations"/>
+		
+	</data>
+
+<LinearLayout
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:layout_height="wrap_content">
+	<TextView
+		
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		
+		android:textColor="@color/profile_top_back_color"
+		android:text="@{user.city+`,`+user.getUpdatesAddress(user.drop_pin_code)}"
+		
+		
+		/>
+	
+	<TextView
+		
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		
+		android:textColor="@color/profile_top_back_color"
+		android:text="@{user.getUpdatesAddress(user.drop_location_address)}"
+		
+		
+		/>
+
+</LinearLayout>
+
+</layout>

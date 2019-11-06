@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:bind="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="toolbar"
+			type="pick.com.app.base.model.ToolbarCustom" />
+		
+		<variable
+			name="activiy"
+			type="pick.com.app.varient.user.ui.activity.VehicleListingUser" />
+	
+		<variable
+			name="searchodel"
+			type="pick.com.app.varient.user.pojo.SearchBookingModel"/>
+		
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<include
+			bind:toolbar="@{toolbar}"
+			layout="@layout/toolbar" />
+		
+		<androidx.core.widget.NestedScrollView
+			android:id="@+id/mScrollView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+				
+				<include layout="@layout/vechile_listing_header" bind:searchodel="@{searchodel}" />
+				
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#BEBABA" />
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+					
+					<LinearLayout
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight=".6"
+						android:gravity="center_vertical"
+						android:paddingStart="5dp">
+						
+						<LinearLayout
+							android:layout_width="wrap_content"
+							android:minWidth="@dimen/_100sdp"
+							android:layout_height="wrap_content"
+							android:layout_margin="5dp"
+							android:onClick="getSortingDailog"
+							android:background="@drawable/rect_view_light_gray"
+							android:gravity="center_vertical"
+							android:padding="5dp">
+							
+							<TextView
+								android:layout_width="0dp"
+								android:layout_weight=".1"
+								android:layout_height="wrap_content"
+								android:paddingEnd="10dp"
+								android:text="@{searchodel.sortting}"
+								android:textSize="12sp" />
+							
+							<ImageView
+								android:layout_width="15dp"
+								android:layout_height="15dp"
+								android:paddingEnd="3dp"
+								android:src="@drawable/dropdown_arrow"
+								android:tint="@color/profile_top_back_color" />
+						</LinearLayout>
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:onClick="@{()->activiy.goToFilterActivity()}"
+							android:src="@drawable/filter_icon" />
+					
+					</LinearLayout>
+					
+					
+					<LinearLayout
+						android:layout_width="0dp"
+						android:layout_height="match_parent"
+						android:layout_weight=".4"
+						
+						android:gravity="right|center_vertical"
+						android:paddingEnd="15dp">
+						
+						<ImageView
+							android:layout_width="25dp"
+							android:layout_height="25dp"
+							android:layout_marginEnd="5dp"
+							android:onClick="@{()->activiy.showListing()}"
+							android:src="@{activiy.islistingActive ? @drawable/list_icon_h :@drawable/list_icon}"
+							
+							tools:src="@drawable/list_icon_h" />
+						
+						<ImageView
+							android:layout_width="25dp"
+							android:layout_height="25dp"
+							android:layout_marginEnd="5dp"
+							android:onClick="@{()->activiy.showGridListing()}"
+							
+							android:src="@{activiy.isGrindActive ? @drawable/grid_icon_h :@drawable/grid_icon}"
+							tools:src="@drawable/grid_icon" />
+						
+						<ImageView
+							android:layout_width="25dp"
+							android:layout_height="25dp"
+							android:onClick="@{()->activiy.showMapListing()}"
+							android:src="@{activiy.isMapActive ? @drawable/map_icon_h :@drawable/map_icon}"
+							
+							tools:src="@drawable/map_icon" />
+					
+					</LinearLayout>
+				</LinearLayout>
+				
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#BEBABA" />
+				
+				<FrameLayout
+					android:id="@+id/frame_listing"
+					android:layout_width="match_parent"
+					
+					android:layout_height="match_parent"
+					
+					></FrameLayout>
+			
+			</LinearLayout>
+		
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+
+
+</layout>

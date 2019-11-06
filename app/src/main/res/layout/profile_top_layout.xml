@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+	<data>
+	
+		<import type="android.view.View"/>
+		<import type="pick.com.app.Constants"/>
+		<import type="pick.com.app.Constants.AppType"/>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel.Data"/>
+	
+	</data>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+			android:minHeight="130dp"
+		android:background="@color/profile_top_back_color"
+		android:padding="10dp">
+		
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/profile_image"
+			android:layout_width="100dp"
+			android:layout_marginStart="5dp"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			app:civ_border_width="2dp"
+			app:loadImage='@{user.upload_url +"profile_pic/"+ user.profile_pic }'
+				android:layout_gravity="center_vertical"
+			app:civ_border_color="@color/skyblue"
+			android:layout_height="100dp"
+			android:src="@drawable/upload_btn" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:gravity="center_vertical"
+			android:layout_marginStart="10dp">
+			
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:layout_height="wrap_content">
+			
+			<TextView
+				android:layout_width="match_parent"
+				
+				android:layout_height="wrap_content"
+				android:textColor="@color/ef_white"
+				android:ellipsize="end"
+				
+				android:maxLines="1"
+				
+				tool:text="sdfkjdshkjfhdskjfhdskjhfkjdshfkjdshfkjhdskjfhdskjfhkjdshfkdssdf;lds;lfkds;lfkdlf;lkhfkjh"
+				android:textSize="15sp"
+				android:text="@{user.dl_name}"/>
+				
+				<ImageView
+					android:layout_width="23dp"
+					android:layout_marginEnd="10dp"
+					android:visibility="gone"
+					android:src="@drawable/edit_icon"
+					android:layout_height="23dp" />
+			</LinearLayout>
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/ef_white"
+				android:textSize="13sp"
+				android:maxLength="40"
+				android:ellipsize="end"
+				android:singleLine="true"
+				android:ems="3"
+				tool:text="sjhfdskjfhdskjfhkjdshfkjdshkjfdshkjfhdskjdjsfdsj"
+				android:text="@{user.email}"/>
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/ef_white"
+				android:textSize="13sp"
+				android:ellipsize="end"
+				android:singleLine="true"
+				tool:text="sdfkjdshkjfhdskjfhdskjhfkjdshfkjdshfkjhdskjfhdskjfhkjdshfkdshfkjh"
+				android:text='@{"+"+user.country_code +"-"+user.contact_number}'/>
+			
+			<TextView
+				android:id="@+id/textViewCompany"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/ef_white"
+				android:textSize="13sp"
+				android:ellipsize="end"
+				android:singleLine="true"
+				tool:text="sdfkjdshkjfhdskjfhdskjhfkjdshfkjdshfkjhdskjfhdskjfhkjdshfkdshfkjh"
+				app:ShowForOwner="@{user}"
+				
+				/>
+
+			<RelativeLayout
+					android:layout_marginTop="10dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<ImageView
+						android:src="@drawable/wallet"
+						android:id="@+id/wallet_logo"
+						android:layout_width="28dp"
+						android:layout_height="28dp"/>
+
+				<TextView
+					    android:id="@+id/wallet"
+						android:layout_toRightOf="@+id/wallet_logo"
+						android:textSize="16sp"
+						android:layout_marginLeft="10dp"
+						android:layout_centerVertical="true"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#ffffff"
+						android:text="@{user.wallet_amount}"
+						/>
+				<TextView
+						android:id="@+id/wallet_value"
+						android:layout_toRightOf="@+id/wallet"
+						android:textSize="16sp"
+						android:layout_marginLeft="5dp"
+						android:layout_centerVertical="true"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#ffffff"
+						android:text="@string/Sar"
+						/>
+
+				<ImageView
+						android:id="@+id/addToWallet"
+						android:layout_width="wrap_content"
+						android:scaleType="fitXY"
+						android:src="@android:drawable/ic_menu_add"
+						android:layout_centerVertical="true"
+						android:layout_alignParentRight="true"
+						android:layout_height="wrap_content"/>
+
+			</RelativeLayout>
+
+
+
+
+		</LinearLayout>
+	
+	</LinearLayout>
+</layout>
+

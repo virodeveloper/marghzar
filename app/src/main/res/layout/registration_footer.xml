@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+	</data>
+	
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+<pick.com.app.uitility.custom.RoundButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="25dp"
+	android:layout_marginRight="25dp"
+	android:gravity="center"
+	android:paddingStart="8dp"
+	android:paddingEnd="8dp"
+	android:text="@string/signup"
+	app:rb_animation_alpha="true"
+	app:rb_animation_duration="500"
+	android:onClick="signUpOnclick"
+	android:textStyle="bold"
+	app:rb_background_color="#1DA1F2"
+	app:rb_background_color_pressed="#0B5D8E"
+	app:rb_corner_radius="3dp"
+	app:rb_corner_width="1dp"
+	app:rb_text_color="@android:color/white"
+	app:rb_text_color_pressed="@android:color/white" />
+/>
+
+
+<LinearLayout
+	android:id="@+id/layoutConnetcWith"
+
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="25dp"
+	android:layout_marginTop="15dp"
+	android:layout_marginBottom="15dp"
+	android:layout_marginRight="25dp"
+	android:gravity="center_vertical"
+	android:orientation="horizontal">
+	
+	<View
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_margin="15dp"
+		android:layout_weight=".1"
+		android:background="@color/ef_white" />
+	
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/conect_with"
+		android:textAllCaps="true"
+		android:textColor="@color/ef_white" />
+	
+	<View
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_margin="15dp"
+		android:layout_weight=".1"
+		android:background="@color/ef_white" />
+</LinearLayout>
+
+<LinearLayout
+	android:id="@+id/layoutLoginbuttons"
+	android:layout_width="match_parent"
+	android:layout_marginRight="15dp"
+	android:layout_marginLeft="15dp"
+	
+	android:layout_height="55dp">
+	
+	<ImageView
+		android:id="@+id/facebooklogin"
+		android:layout_width="0dp"
+		android:layout_weight=".1"
+		android:layout_margin="4dp"
+		android:src="@drawable/facebook_btn"
+		android:layout_height="wrap_content" />
+	<ImageView
+		android:id="@+id/googleLogin"
+		android:layout_width="0dp"
+		android:layout_weight=".1"
+		android:layout_margin="4dp"
+		
+		android:src="@drawable/google_btn"
+		android:layout_height="wrap_content" />
+	
+
+</LinearLayout>
+
+
+<pick.com.app.uitility.custom.RoundButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="25dp"
+	android:layout_marginRight="25dp"
+	android:layout_marginTop="15dp"
+	android:gravity="center"
+	android:paddingStart="8dp"
+	android:paddingEnd="8dp"
+	android:text="@string/login"
+	android:layout_marginBottom="15dp"
+	app:rb_animation_alpha="true"
+	app:rb_animation_duration="500"
+	
+	android:onClick="loginonClick"
+	app:rb_background_color_pressed="#9F9B9B"
+	app:rb_corner_color="#fff"
+	app:rb_corner_radius="3dp"
+	app:rb_corner_width="1dp"
+	
+	app:rb_text_color="@android:color/white"
+	app:rb_text_color_pressed="@android:color/white" />
+/>
+
+</LinearLayout>
+
+</layout>

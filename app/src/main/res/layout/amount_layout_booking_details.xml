@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:background="@drawable/rect_view_editprofile"
+			android:orientation="vertical">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/total_amount" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.total_amount)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:visibility="@{user.isExtended(user)?View.VISIBLE:View.GONE}"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:layout_height="wrap_content">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/extended_chargs" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.extended_charges)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/extra_kilo_charge" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.extra_kilometer_charges)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/fuel_chargs" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.fuel_charges)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/car_accessories_charges" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.car_accessories_charges)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/vehicle_damage_charges" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.vehicle_damage_charge)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/late_return_charges" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.late_return_charge)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/refundable_charges" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.refundable_amount)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/paid_amt" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.payable_amount)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/ef_grey" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="15dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/payable_amt" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					
+					android:text='@{@string/amointinSar(user.extra_payable_amount)}'
+					tools:text="1200 SAR" />
+			</LinearLayout>
+		
+		
+		</LinearLayout>
+	</LinearLayout>
+</layout>

@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:bind="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="activity"
+			type="pick.com.app.varient.owner.activity.ManageAvailabilityActivity"/>
+		
+		<variable
+			name="toolbar"
+			type="pick.com.app.base.model.ToolbarCustom"/>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.OwnerAvailabilityModel" />
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@color/ef_white">
+		
+		<include
+			layout="@layout/toolbar"
+			bind:toolbar="@{toolbar}" />
+		
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="end"
+			android:padding="10dp">
+			
+			
+			<ToggleButton
+				android:layout_width="80dp"
+				android:layout_height="20dp"
+				android:checked="@{user.data[0].is_user_available == 0 ? false : true}"
+
+				android:onClick='@{(v)->activity.ownerAvailable(user)}'
+				android:background="@drawable/bgtoggle"
+				android:button="@null"
+				android:textOff=""
+				android:textOn="" />
+		
+		</RelativeLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:id="@+id/monday_check"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.mondayAvailable(user)}'
+					android:checked="@{user.data[0].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/monday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<FrameLayout
+				android:id="@+id/ll_start_time_monday"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<FrameLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:hint="@string/start_time"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.mondayStartTime(user)}'
+						android:text="@{user.data[0].start_time}"
+						android:layout_centerInParent="true"
+						android:background="@null"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</FrameLayout>
+			
+			</FrameLayout>
+			
+			<LinearLayout
+				android:id="@+id/ll_end_time_monday"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.mondayEndTime(user)}'
+						android:text="@{user.data[0].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.tuesdayAvailable(user)}'
+					android:checked="@{user.data[1].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/tuesday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.tuesdayStartTime(user)}'
+						android:text="@{user.data[1].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.tuesdayEndTime(user)}'
+						android:text="@{user.data[1].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.wednesdayAvailable(user)}'
+					android:checked="@{user.data[2].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/wednesday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.wedStartTime(user)}'
+						android:text="@{user.data[2].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.wedEndTime(user)}'
+						android:text="@{user.data[2].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.thursdayAvailable(user)}'
+					android:checked="@{user.data[3].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/thursday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.thurStartTime(user)}'
+						android:text="@{user.data[3].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.thurEndTime(user)}'
+						android:text="@{user.data[3].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.fridayAvailable(user)}'
+					android:checked="@{user.data[4].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/friday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.fridaystartTime(user)}'
+						android:text="@{user.data[4].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.fridayEndTime(user)}'
+						android:text="@{user.data[4].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.saturdayAvailable(user)}'
+					android:checked="@{user.data[5].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/saturday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.satStartTime(user)}'
+						android:text="@{user.data[5].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.satEndTime(user)}'
+						android:text="@{user.data[5].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingEnd="10dp">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:orientation="horizontal">
+				
+				<CheckBox
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick='@{(v)->activity.sundayAvailable(user)}'
+					android:checked="@{user.data[6].is_available == 0 ? false : true}" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/sunday"
+					android:textSize="@dimen/_10sdp"
+					android:layout_marginStart="10dp"/>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginEnd="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.sundayStartTime(user)}'
+						android:text="@{user.data[6].start_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/start_time"
+						android:singleLine="true" />
+					
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:tint="@color/black"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5dp"
+				android:layout_marginStart="5dp"
+				android:background="@drawable/rect_view_editprofile">
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@null"
+						android:gravity="center"
+						android:onClick='@{(v)->activity.sundayEndTime(user)}'
+						android:text="@{user.data[6].end_time}"
+						android:layout_centerInParent="true"
+						android:hint="@string/end_time"
+						android:singleLine="true" />
+					
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:layout_alignParentRight="true"
+						android:padding="5dp"
+						android:visibility="invisible"
+						android:layout_gravity="end|center_vertical"
+						android:layout_marginStart="10dp"
+						android:tint="@color/black"
+						android:src="@drawable/dropdown_arrow" />
+				</RelativeLayout>
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		<pick.com.app.uitility.custom.RoundButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:gravity="center"
+			android:layout_gravity="end"
+			android:paddingStart="10dp"
+			android:paddingEnd="10dp"
+			android:onClick="@{(v)->activity.saveAvailability(user)}"
+			android:textStyle="bold"
+			android:layout_marginEnd="@dimen/_10sdp"
+			android:text="@string/save"
+			app:rb_animation_alpha="true"
+			app:rb_animation_duration="500"
+			app:rb_background_color="#1DA1F2"
+			app:rb_background_color_pressed="#0B5D8E"
+			app:rb_corner_radius="3dp"
+			app:rb_corner_width="1dp"
+			app:rb_text_color="@android:color/white"
+			app:rb_text_color_pressed="@android:color/white" />
+		/>
+		
+
+	</LinearLayout>
+
+</layout>

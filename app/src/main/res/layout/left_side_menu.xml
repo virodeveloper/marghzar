@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+		
+	</data>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/ef_white"
+		android:orientation="vertical">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="150dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:background="@color/profile_top_back_color"
+			android:padding="15dp">
+			
+			<de.hdodenhof.circleimageview.CircleImageView
+				android:id="@+id/profile_image"
+				android:layout_width="70dp"
+				android:layout_marginStart="5dp"
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				app:civ_border_width="2dp"
+				app:loadImage='@{user.data.upload_url +"profile_pic/"+ user.data.profile_pic }'
+				
+				android:layout_gravity="center_vertical"
+				app:civ_border_color="@color/skyblue"
+				android:layout_height="70dp"
+				android:src="@drawable/upload_btn" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				
+				android:layout_marginStart="10dp">
+				
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@{user.data.dl_name}"
+					tool:text="dsfdsfdsffdsfdsfdsdffdsfdsfdsfdsfdafdfdsfdsfdfdfdsfdsfdsffdsffdsfdsfdsfsfdsffdsfdsfdfdsfsfsf"
+					android:maxLength="40"
+					android:ellipsize="end"
+					android:singleLine="true"
+					android:ems="3"
+					android:textColor="@color/ef_white"
+					android:textSize="15sp" />
+				
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/ef_white"
+					
+					android:text='@{"+"+user.data.country_code +"-"+user.data.contact_number}'
+					android:textSize="13sp" />
+				
+			</LinearLayout>
+		
+		</LinearLayout>
+		
+		
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerView"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+		
+	</LinearLayout>
+</layout>
+

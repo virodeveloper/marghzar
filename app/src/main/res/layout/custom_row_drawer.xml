@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.base.model.DrawerModel"/>
+		
+	</data>
+	
+	
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/ll_my_profile"
+android:layout_width="match_parent"
+	
+	app:showlayout="@{user}"
+	
+	android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:padding="10dp">
+
+<ImageView
+	android:id="@+id/img_profile"
+	android:layout_width="20dp"
+	app:showSelectImage="@{user}"
+	android:layout_height="20dp"
+	android:layout_gravity="center_vertical"
+	android:src="@drawable/slide_nav_icon"/>
+
+<TextView
+	android:id="@+id/txt_profile"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:textColor="@color/black"
+	android:layout_marginStart="5dp"
+	app:showTextview="@{user}"
+	android:textSize="15sp"
+	android:text="@{user.title}"/>
+</LinearLayout>
+</layout>
+

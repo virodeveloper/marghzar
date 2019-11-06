@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.FilterModel.Data.Filterdata.Subtypes"/>
+		
+	</data>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			
+			<androidx.appcompat.widget.AppCompatCheckBox
+				android:layout_width="wrap_content"
+				android:text="@={user.subtype_title}"
+				android:checked="@={user.isitemSelected}"
+				android:textColor="@color/change_screen_text_color"
+				android:textSize="10sp"
+				android:layout_height="wrap_content" />
+			
+		</LinearLayout>
+	
+	</LinearLayout>
+</layout>
+

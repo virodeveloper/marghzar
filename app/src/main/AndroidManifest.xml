@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pick.com.app"
+    android:targetSandboxVersion="1">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE " />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_loogi"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Settlement"></activity>
+        <activity android:name=".base.PaymentActi" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4123c844083cb2cd520fb25fe377a6e16f0c8ed3" />
+
+        <activity android:name=".base.PreviewActivity" />
+        <activity android:name="com.github.pdfviewer.PDFViewActivity" />
+
+        <service
+            android:name=".service.OnClearFromRecentService"
+            android:stopWithTask="false" />
+
+        <activity
+            android:name=".varient.user.ui.activity.RegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.SplashScreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".base.ListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.OtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.owner.activity.AddAccount"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.FilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.WalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.AddWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.owner.activity.ManageVehicleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.owner.activity.ManageAvailabilityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.owner.activity.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.StaticWebUrlActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.FillBookingActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.VehicleDetailsActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.LoginActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".base.ForgotPasswordActivity" />
+        <!--
+  <activity android:name=".varient.owner.activity.MyProfileFragment"
+			  android:screenOrientation="portrait"/>
+        -->
+        <activity
+            android:name=".varient.owner.activity.RegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.VehicleListingUser"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.ConfirmOtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.owner.activity.BookingDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.CountryCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.UserBookingDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".varient.user.ui.activity.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".varient.owner.activity.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".varient.owner.activity.AddNewVehicleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".varient.owner.activity.ActivityBooking"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".varient.user.ui.activity.ContactUsActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider${facebookId}"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="fb${facebookId}" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity> <!-- <activity android:name=".varient.user.ui.activity.FilterActivity" /> -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" /> <!-- FCM Notification -->
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+			 notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="default_notification_channel_id" />
+
+        <service android:name=".fcm.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+    </application>
+
+</manifest>

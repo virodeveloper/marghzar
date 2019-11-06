@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://schemas.android.com/apk/res-auto"
+	xmlns:app="http://schemas.android.com/tools">
+	
+	<data>
+		<import type="android.view.View" />
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+		
+		<variable
+			name="toolbar"
+			type="pick.com.app.base.model.ToolbarCustom"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<include layout="@layout/toolbar"
+			bind:toolbar="@{toolbar}"/>
+		
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+				
+				
+				
+				<include
+					layout="@layout/custom_owner_my_booking"
+					bind:user="@{user}" />
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:background="@drawable/rect_view"
+					android:layout_margin="5dp"
+					android:gravity="center_vertical"
+					android:visibility="@{user.show_license_details ? View.VISIBLE : View.GONE}"
+					android:layout_height="wrap_content">
+					
+					<ImageView
+						android:id="@+id/imageLisence"
+						android:layout_width="85dp"
+						android:src="@drawable/dummu"
+						android:scaleType="centerCrop"
+						android:layout_margin="10dp"
+						android:layout_height="50dp" />
+					
+					<TextView
+						android:layout_width="wrap_content"
+						
+						android:textSize="12sp"
+						android:text="@string/driving_license_number_fill"
+						android:layout_height="wrap_content" />
+					
+					<TextView
+						android:layout_width="0dp"
+						android:layout_weight=".1"
+						android:gravity="right"
+						android:text="@{user.user_data.dl_number}"
+						android:textStyle="bold"
+						android:paddingEnd="10dp"
+						android:textSize="14sp"
+						android:textColor="@color/skyblue"
+						android:layout_height="wrap_content" />
+				
+				
+				</LinearLayout>
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					
+					android:orientation="vertical">
+					
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						app:manageLayout="@{user}"
+						app:layoutname='@{"check_up_before_fill_form"}'
+						android:layout_height="wrap_content">
+						
+						<include layout="@layout/check_up_before_fill_form" bind:user="@{user}"  />
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						
+						app:manageLayout="@{user}"
+						app:layoutname='@{"check_up_before_view_user"}'
+						android:layout_height="wrap_content">
+						
+						<include
+							layout="@layout/check_up_before_view_user"
+							
+							bind:user="@{user}"
+							/>
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						
+						app:manageLayout="@{user}"
+						app:layoutname='@{"check_up_after_fill_form"}'
+						android:layout_height="wrap_content"
+						
+						>
+						<include
+							layout="@layout/check_up_after_fill_form"
+							bind:user="@{user}"
+							/>
+					
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						
+						app:manageLayout="@{user}"
+						app:layoutname='@{"check_up_after_view"}'
+						android:layout_height="wrap_content"
+						
+						>
+						<include
+							layout="@layout/check_up_after_view"
+							
+							bind:user="@{user}"
+							/>
+					
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						
+						app:manageLayout="@{user}"
+						app:layoutname='@{"amount_layout_booking_details"}'
+						android:layout_height="wrap_content"
+						
+						>
+						<include
+							layout="@layout/amount_layout_booking_details"
+							bind:user="@{user}"
+							/>
+					
+					</LinearLayout>
+					
+					
+				</LinearLayout>
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:gravity="bottom"
+					android:layout_margin="10dp"
+					android:layout_height="match_parent">
+					
+					
+					
+					
+					
+					
+					<LinearLayout
+						
+						app:manageLayout="@{user}"
+						app:layoutname='@{"cancel_submit_btn"}'
+						android:layout_width="match_parent"
+						android:layout_height="40dp">
+						<androidx.appcompat.widget.AppCompatButton
+							android:layout_width="0dp"
+							android:layout_weight=".1"
+							android:background="#1DA1F2"
+							android:layout_marginEnd="5dp"
+							android:textSize="14sp"
+							android:elevation="5dp"
+							android:onClick="submitData"
+							android:text="@{user.getButtonText(user.booking_status)}"
+							android:textColor="@color/ef_white"
+							android:padding="7dp"
+							android:layout_height="match_parent" />
+						<androidx.appcompat.widget.AppCompatButton
+							android:layout_width="0dp"
+							android:layout_weight=".1"
+							android:textColor="@color/ef_white"
+							android:layout_marginStart="5dp"
+							android:textSize="14sp"
+							android:elevation="5dp"
+							android:onClick="cancelBookingByOwner"
+							android:visibility="@{user.show_cancel_booking ? View.VISIBLE : View.GONE}"
+							android:text="@string/cancel_booking"
+							android:background="#1DA1F2"
+							android:padding="7dp"
+							android:layout_height="match_parent" />
+					</LinearLayout>
+				
+				</LinearLayout>
+			
+			</LinearLayout>
+		
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+	
+</layout>

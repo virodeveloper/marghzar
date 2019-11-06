@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<import type="android.text.Html"/>
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.VehicleSearchData.Data.Vehicles.Policyes"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_marginTop="@dimen/_15sdp"
+		android:layout_height="wrap_content">
+		<TextView
+			android:layout_width="wrap_content"
+			tools:text="Cancellation:"
+			android:text="@{user.name}"
+			android:textStyle="bold"
+			android:textColor="@color/profile_top_back_color"
+			android:layout_height="wrap_content" />
+		<TextView
+			android:layout_width="wrap_content"
+			tools:text="Cancellation made after booking start :No refund:"
+			android:text="@{Html.fromHtml(user.description)}"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+</layout>

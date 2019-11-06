@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	
+	<data>
+		<import type="android.view.View"/>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+	</data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:gravity="center_horizontal"
+	
+	android:orientation="vertical">
+
+<ImageView
+	android:layout_width="100dp"
+	
+	android:layout_height="100dp"
+	android:layout_margin="20dp"
+	
+	android:src="@drawable/login_logo" />
+
+
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center_vertical">
+	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="10dp"
+			android:text="@string/profile_pciture"
+			android:textColor="@color/ef_white" />
+		
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/profile_image"
+			android:layout_width="80dp"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			app:loadRegisterpciImage='@{user}'
+			app:civ_border_width="2dp"
+			app:civ_border_color="@color/skyblue"
+			android:layout_height="80dp"
+			android:src="@drawable/upload_btn" />
+	
+	
+	</LinearLayout>
+	
+	<pick.com.app.uitility.custom.RoundButton
+		android:layout_width="120dp"
+		android:layout_height="33dp"
+		android:gravity="center"
+		android:text="@string/upload"
+		android:textSize="10sp"
+		
+		android:visibility="gone"
+		
+		
+		app:rb_background_color="#1DA1F2"
+		app:rb_background_color_pressed="#0B5D8E"
+		app:rb_corner_radius="35dp"
+		app:rb_corner_width="1dp"
+		
+		app:rb_text_color="@android:color/white"
+		app:rb_text_color_pressed="@android:color/white" />
+	/>
+
+</LinearLayout>
+
+</LinearLayout>
+
+</layout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<data>
+		<variable name="activity" type="android.app.Activity"/>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel" />
+	
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/bg"
+		
+		android:orientation="vertical">
+		
+		<ImageView
+			android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:layout_margin="15dp"
+			android:onClick='@{() -> activity.onBackPressed()}'
+			android:src="@drawable/ef_ic_arrow_back" />
+		
+		<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+			android:layout_width="match_parent"
+			
+			android:layout_height="match_parent"
+			
+			android:gravity="center"
+			android:orientation="vertical">
+			
+			
+			<ImageView
+				android:layout_width="110dp"
+				android:layout_height="110dp"
+				android:layout_marginBottom="20dp"
+				android:src="@drawable/login_logo" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				
+				android:text='@{String.format(@string/sms_with_a_4_digit_code_has_been_send_on_your_nmobile_number) +"  +"+user.country_code+"-"+user.contact_number+""}'
+				
+				
+				android:textColor="@color/ef_white" />
+			
+			<pick.com.app.uitility.custom.CustomEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="25dp"
+				android:layout_marginTop="25dp"
+				android:layout_marginRight="25dp"
+				android:hint="@string/otp_code"
+				android:inputType="number"
+				android:padding="10dp"
+				android:text="@={user.data.otp_number}"
+
+				android:maxLength="4"
+				android:textColor="@color/ef_white"
+				
+				
+				android:textColorHint="#B6C6C1C1"
+				app:libIZO_setBorderColor="#FFFFFF"
+				
+				
+				app:libIZO_setBorderView="true"
+				app:libIZO_setCornerRadius="5dp"
+				 />
+			
+			<pick.com.app.uitility.custom.RoundButton
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="25dp"
+				android:layout_marginTop="20dp"
+				android:layout_marginRight="25dp"
+				android:gravity="center"
+				android:onClick="confirmOTPClick"
+				android:paddingStart="8dp"
+				android:paddingEnd="8dp"
+				android:text="@string/confirm_otp"
+				app:rb_animation_alpha="true"
+				app:rb_animation_duration="500"
+				
+				
+				app:rb_background_color="#1DA1F2"
+				app:rb_background_color_pressed="#0B5D8E"
+				app:rb_corner_radius="3dp"
+				app:rb_corner_width="1dp"
+				
+				app:rb_text_color="@android:color/white"
+				app:rb_text_color_pressed="@android:color/white" />
+			/>
+			
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="15dp"
+				android:text="@string/didn_t_reveived_code"
+				android:textColor="@color/ef_white" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="15dp"
+				android:text="Resend Time"
+				android:id="@+id/tx1"
+				android:textColor="@color/ef_white" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="resendOTP"
+				android:id="@+id/tx2"
+				android:text="@string/resend_code"
+				android:textColor="#1DA1F2" />
+		
+		
+		</LinearLayout>
+	
+	</LinearLayout>
+
+</layout>

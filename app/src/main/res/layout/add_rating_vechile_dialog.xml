@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:background="@color/trans_black_color"
+	android:orientation="vertical">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/_10sdp"
+		android:layout_marginEnd="@dimen/_10sdp"
+		android:background="@drawable/top_corner"
+		android:orientation="vertical">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp">
+			
+			<TextView
+				android:id="@+id/textViewTitle"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight=".1"
+				android:text="@string/add_rating_for_vehicle" />
+			
+			<ImageView
+				android:id="@+id/cancel_rating_dialog"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:src="@drawable/cross_icon" />
+		
+		
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="#fff"
+			android:gravity="center">
+			
+			<androidx.appcompat.widget.AppCompatRatingBar
+				android:id="@+id/vehicleRating"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="7dp"
+				style="@style/raingbar"
+				
+				android:layout_marginEnd="7dp"
+				android:rating="1" />
+		
+		</LinearLayout>
+	
+	</LinearLayout>
+	
+	
+	<Button
+		android:id="@+id/submit_rating"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/bottom_corner"
+		android:padding="@dimen/_10sdp"
+		android:text="@string/submit"
+		android:layout_marginStart="@dimen/_10sdp"
+		android:layout_marginEnd="@dimen/_10sdp"
+		android:textColor="@color/ef_white" />
+
+
+</LinearLayout>

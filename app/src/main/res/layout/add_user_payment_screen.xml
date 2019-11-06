@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://schemas.android.com/apk/res-auto"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+	
+	<data>
+		<variable
+			name="toolbar"
+			type="pick.com.app.base.model.ToolbarCustom"/>
+		
+		<variable
+			name="model"
+			type="pick.com.app.varient.user.pojo.WalletModel" />
+		
+		<variable name="redirection"
+			type="pick.com.app.varient.user.ui.activity.AddWalletActivity"/>
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<include layout="@layout/toolbar"
+			bind:toolbar="@{toolbar}"/>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:background="@color/white">
+			
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="@dimen/_10sdp"
+				android:background="@color/light_grey">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentStart="true"
+					android:textSize="@dimen/_12sdp"
+					android:text="@string/payable_amount"
+					android:textColor="@color/black"/>
+				
+				<TextView
+					android:id="@+id/payable_amount"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentEnd="true"
+					android:textSize="@dimen/_12sdp"
+					android:hint="500 SAR"
+					android:textColorHint="@color/skyblue"
+					android:textColor="@color/skyblue"/>
+			</RelativeLayout>
+			
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+					android:visibility="gone"
+				android:padding="@dimen/_10sdp">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentStart="true"
+					android:textSize="@dimen/_12sdp"
+					android:text="@string/pick_wallet"
+					android:textColor="@color/black"/>
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentEnd="true"
+					android:textSize="@dimen/_12sdp"
+					android:hint="500 SAR"
+					android:textColorHint="@color/skyblue"
+					android:textColor="@color/skyblue"/>
+			</RelativeLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/gray_btn_bg_color"/>
+			
+			<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:fillViewport="true">
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_marginStart="@dimen/_10sdp"
+					android:layout_marginEnd="@dimen/_10sdp"
+					android:layout_marginTop="@dimen/_10sdp">
+					
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentStart="true"
+						android:textSize="@dimen/_11sdp"
+						android:text="@string/credit_card_detials"
+						android:textColor="@color/skyblue"/>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/_10sdp"
+						android:orientation="horizontal">
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginEnd="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/first_name"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/first_name"
+								android:inputType="textCapSentences"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:text="@={model.first_name}"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginStart="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/last_name"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/last_name"
+								android:text="@={model.last_name}"
+								android:inputType="textCapSentences"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
+						android:layout_marginTop="@dimen/_10sdp">
+						
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_alignParentStart="true"
+							android:textSize="@dimen/_11sdp"
+							android:textAllCaps="true"
+							android:text="@string/mobile_number"
+							android:textColor="@color/mdtp_dark_gray"/>
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							app:libIZO_setBorderColor="#353535"
+							app:libIZO_setBorderView="true"
+							app:libIZO_setCornerRadius="3dp"
+							android:background="@drawable/rect_view"
+							android:layout_marginTop="10dp"
+							android:layout_marginRight="20dp">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								tool:text="+966 -"
+								android:text='@{"+"+model.country_code+" -"}'
+								
+								android:paddingEnd="10dp"
+								android:paddingStart="10dp"
+								
+								android:onClick="@{(theView) -> redirection.goToCountryCode()}"
+								
+								android:textColor="#353535"
+								android:layout_height="wrap_content" />
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:textSize="13sp"
+								android:hint="@string/enter_mobile_number"
+								android:text="@={model.contact_number}"
+								android:inputType="number"
+								android:padding="8dp"
+								android:textColor="#353535"
+								android:textColorHint="#B6C6C1C1"
+								android:background="@null"
+								/>
+						
+						</LinearLayout>
+						
+						<pick.com.app.uitility.custom.CustomEditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="5dp"
+							android:hint="@string/mobile_number"
+							android:inputType="number"
+							android:padding="8dp"
+							android:visibility="gone"
+							android:maxLines="1"
+							android:textColor="#353535"
+							android:textColorHint="#71353535"
+							android:textSize="13sp"
+							app:libIZO_setBorderColor="#353535"
+							app:libIZO_setBorderView="true"
+							app:libIZO_setCornerRadius="3dp" />
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
+						android:layout_marginTop="@dimen/_10sdp">
+						
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_alignParentStart="true"
+							android:textSize="@dimen/_11sdp"
+							android:textAllCaps="true"
+							android:text="@string/email"
+							android:textColor="@color/mdtp_dark_gray"/>
+						
+						<pick.com.app.uitility.custom.CustomEditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="5dp"
+							android:hint="@string/email"
+							android:text="@={model.email}"
+							android:inputType="textEmailAddress"
+							android:padding="8dp"
+							android:maxLines="1"
+							android:textColor="#353535"
+							android:textColorHint="#71353535"
+							android:textSize="13sp"
+							app:libIZO_setBorderColor="#353535"
+							app:libIZO_setBorderView="true"
+							app:libIZO_setCornerRadius="3dp" />
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
+						android:layout_marginTop="@dimen/_10sdp">
+						
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_alignParentStart="true"
+							android:textSize="@dimen/_11sdp"
+							android:textAllCaps="true"
+							android:text="@string/billing_address"
+							android:textColor="@color/mdtp_dark_gray"/>
+						
+						<pick.com.app.uitility.custom.CustomEditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="5dp"
+							android:hint="@string/billing_address"
+							android:inputType="text"
+							android:text="@={model.billing_address}"
+							android:padding="8dp"
+							android:maxLines="1"
+							android:textColor="#353535"
+							android:textColorHint="#71353535"
+							android:textSize="13sp"
+							app:libIZO_setBorderColor="#353535"
+							app:libIZO_setBorderView="true"
+							app:libIZO_setCornerRadius="3dp" />
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/_10sdp"
+						android:orientation="horizontal">
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginEnd="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/city"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/city"
+								android:text="@={model.city}"
+								android:inputType="textCapSentences"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginStart="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/state"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/state"
+								android:text="@={model.state}"
+								android:inputType="textCapSentences"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+					</LinearLayout>
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/_10sdp"
+						android:orientation="horizontal">
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginEnd="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/postal_code"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/postal_code"
+								android:inputType="number"
+								android:text="@={model.postal_code}"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+						
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:layout_marginStart="@dimen/_5sdp"
+							android:orientation="vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentStart="true"
+								android:textSize="@dimen/_11sdp"
+								android:textAllCaps="true"
+								android:text="@string/country"
+								android:textColor="@color/mdtp_dark_gray"/>
+							
+							<pick.com.app.uitility.custom.CustomEditText
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:hint="@string/country"
+								android:text="@={model.country_name}"
+								android:inputType="textCapSentences"
+								android:padding="8dp"
+								android:maxLength="30"
+								android:maxLines="1"
+								android:textColor="#353535"
+								android:textColorHint="#71353535"
+								android:textSize="13sp"
+								app:libIZO_setBorderColor="#353535"
+								app:libIZO_setBorderView="true"
+								app:libIZO_setCornerRadius="3dp" />
+						</LinearLayout>
+					</LinearLayout>
+					
+					<pick.com.app.uitility.custom.RoundButton
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginBottom="15dp"
+						android:gravity="center"
+						android:onClick="payNow"
+						android:paddingStart="8dp"
+						android:paddingEnd="8dp"
+						android:text="@string/pay_now"
+						app:rb_animation_alpha="true"
+						app:rb_animation_duration="500"
+						app:rb_background_color="#1DA1F2"
+						app:rb_background_color_pressed="#0B5D8E"
+						app:rb_corner_radius="3dp"
+						app:rb_corner_width="1dp"
+						app:rb_text_color="@android:color/white"
+						app:rb_text_color_pressed="@android:color/white" />
+				
+				</LinearLayout>
+				
+			</ScrollView>
+			
+			
+		</LinearLayout>
+	</LinearLayout>
+
+</layout>

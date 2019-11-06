@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.VehicleSearchData.Data.Vehicles"/>
+	
+	
+	</data>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_margin="7dp"
+		android:background="@drawable/rect_view_light_gray"
+		android:layout_height="wrap_content">
+		
+		
+		<RelativeLayout
+			android:layout_width="match_parent"
+			
+			android:layout_height="wrap_content">
+			
+			<ImageView
+				android:layout_width="match_parent"
+				android:src="@drawable/dummu"
+				app:loadImageData='@{user.upload_url +"vehicle_images/"+ user.vehicle_image }'
+				
+				
+				android:scaleType="fitXY"
+				android:layout_height="200dp" />
+			
+			
+			<ImageView
+				android:layout_width="35dp"
+				android:layout_margin="10dp"
+				app:setFav="@{user}"
+				
+				android:layout_alignParentRight="true"
+				tools:src="@drawable/fav_icon"
+				android:layout_height="35dp" />
+		
+		
+		</RelativeLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/ef_grey" />
+		
+		
+		<TextView
+			android:layout_width="wrap_content"
+			tools:text="Maruti Swift"
+			android:text="@{user.model_name}"
+			
+			android:layout_marginTop="5dp"
+			android:textColor="@color/profile_top_back_color"
+			android:paddingStart="10dp"
+			android:layout_height="wrap_content" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:padding="5dp"
+			android:paddingStart="10dp"
+			android:layout_height="wrap_content">
+			
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="5 Seater"
+					android:text='@{user.seater+" Seater"}'
+					android:textSize="12sp"
+					android:layout_height="wrap_content" />
+				
+				<View
+					android:layout_width="1dp"
+					android:layout_margin="3dp"
+					android:background="#A19FA1"
+					android:layout_height="match_parent" />
+			
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="2016 Model"
+					android:text='@{user.vehicle_year+" Model"}'
+					
+					android:textSize="12sp"
+					android:layout_height="wrap_content" />
+				
+				<View
+					android:layout_width="1dp"
+					android:layout_margin="3dp"
+					android:background="#A19FA1"
+					
+					android:layout_height="match_parent" />
+			
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Small,Hatchback"
+					android:text='@{user.vehicle_type_name+" "+user.vehicle_subtype_name}'
+					
+					android:textSize="12sp"
+					android:layout_height="wrap_content" />
+				
+				<View
+					android:layout_width="1dp"
+					android:layout_margin="3dp"
+					android:background="#A19FA1"
+					android:layout_height="match_parent" />
+			
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Manual"
+					android:text='@{user.vehicle_transmission_title}'
+					android:inputType="textCapSentences"
+					
+					android:textSize="12sp"
+					android:layout_height="wrap_content" />
+				
+				<View
+					android:layout_width="1dp"
+					android:layout_margin="3dp"
+					android:background="#A19FA1"
+					android:layout_height="match_parent" />
+			
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Petrol"
+					android:text='@{user.fuel_type}'
+					android:inputType="textCapSentences"
+					android:textSize="12sp"
+					android:layout_height="wrap_content" />
+			
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+		<View
+			android:layout_width="match_parent"
+			android:background="@color/ef_grey"
+			android:layout_marginTop="5dp"
+			android:layout_height="1dp" />
+		
+		<LinearLayout
+			
+			android:layout_width="match_parent"
+			
+			
+			android:layout_height="wrap_content">
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".5"
+				android:layout_margin="@dimen/_2sdp"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/_8sdp"
+				
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Pickup Address"
+					android:text="@{user.isDifferentCity(user.is_different_city) ?`Pickup Address`:`Pickup/Drop Address`}"
+					
+					android:textSize="12sp"
+					android:textColor="@color/profile_top_back_color"
+					android:layout_height="wrap_content" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="A-68,69 Sunder Singh Bhafdfsfljdslfjdsflkjndari Nagar, Swej Farm, Sodala, Jaipur, Rajasthan 302019"
+					android:text="@{user.pick_adddress}"
+					
+					android:textSize="12sp"
+					android:maxLines="3"
+					android:paddingEnd="5dp"
+					android:ellipsize="end"
+					android:layout_height="wrap_content" />
+			
+			
+			</LinearLayout>
+			
+			<View
+				android:layout_width="1dp"
+				android:visibility="@{user.isDifferentCity(user.is_different_city) ?View.VISIBLE:View.GONE}"
+				
+				android:background="@color/ef_grey"
+				android:layout_height="match_parent" />
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".5"
+				android:gravity="left"
+				android:layout_margin="@dimen/_2sdp"
+				android:paddingStart="@dimen/_8sdp"
+				android:visibility="@{user.isDifferentCity(user.is_different_city) ?View.VISIBLE:View.GONE}"
+				
+				android:orientation="vertical"
+				android:layout_height="wrap_content">
+				
+				<TextView
+					android:layout_width="wrap_content"
+					android:text="@string/drop_address"
+					android:textSize="12sp"
+					android:textColor="@color/profile_top_back_color"
+					android:layout_height="wrap_content" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="A-68,69 Sunder Singh Bhandari Nagar, Swej Farm, Sodala, Jaipur, Rajasthan 302019"
+					android:text="@{user.drop_location_address}"
+					android:textSize="12sp"
+					android:maxLines="3"
+					android:paddingEnd="5dp"
+					android:ellipsize="end"
+					android:layout_height="wrap_content" />
+			
+			
+			</LinearLayout>
+		</LinearLayout>
+		
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/ef_grey" />
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			
+			android:layout_height="wrap_content">
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".5"
+				android:orientation="vertical"
+				android:padding="10dp"
+				android:layout_height="wrap_content">
+				
+				
+				
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:gravity="center_vertical"
+					android:layout_height="wrap_content">
+					
+					
+					<TextView
+						android:layout_width="wrap_content"
+						tools:text="1000"
+						android:text="@{user.vehicle_charges_one_day}"
+						
+						android:textStyle="bold"
+						android:textSize="13sp"
+						android:paddingEnd="7sp"
+						android:textColor="@color/skyblue"
+						android:layout_height="wrap_content" />
+					
+					<TextView
+						android:layout_width="wrap_content"
+						android:textSize="12sp"
+						android:text="@string/sar_day_text"
+						android:textColor="@color/skyblue"
+						android:layout_height="wrap_content" />
+				
+				</LinearLayout>
+				
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Free Km 250 km"
+					android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.INVISIBLE}"
+					android:text='@{@string/free_km_with_value(user.one_day_free_kilometer)}'
+					
+					android:textSize="11sp"
+					android:textColor="@color/profile_top_back_color"
+					android:layout_height="wrap_content" />
+				
+				<TextView
+					android:layout_width="wrap_content"
+					tools:text="Excess 50 SAR/Km"
+					android:visibility="@{user.vehicle_for==1?View.VISIBLE:View.GONE}"
+					android:text='@{@string/excess_value(user.per_kilometer_charge)}'
+					
+					android:textSize="11sp"
+					android:layout_height="wrap_content" />
+			
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".5"
+				android:gravity="right|center_vertical"
+				android:paddingEnd="10dp"
+				
+				android:layout_height="match_parent">
+				
+				
+				<pick.com.app.uitility.custom.RoundTextView
+					android:layout_width="130dp"
+					android:layout_height="42dp"
+					android:gravity="center"
+					android:textColor="#fff"
+					app:allCorner="06dp"
+					app:bgColor="@color/skyblue"
+					android:text="@string/book_now"
+					 />
+				/>
+			</LinearLayout>
+		
+		</LinearLayout>
+	
+	</LinearLayout>
+</layout>

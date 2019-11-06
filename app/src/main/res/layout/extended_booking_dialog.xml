@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tool="http://schemas.android.com/tools">
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.SearchBookingModel"/>
+		
+		<variable
+			name="userBooking"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+		
+		<variable
+			name="activity"
+			type="pick.com.app.varient.user.ui.activity.UserBookingDetailActivity"/>
+	
+	</data>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/trans_black_color"
+		android:gravity="center"
+		android:orientation="vertical">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/_10sdp"
+			android:layout_marginEnd="@dimen/_10sdp"
+			android:background="@drawable/top_corner"
+			android:orientation="vertical">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="10dp">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:text="@string/extended_booking" />
+				
+				<ImageView
+					android:id="@+id/cancel_extended_dialog"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:src="@drawable/cross_icon" />
+			
+			
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/gray_btn_bg_color" />
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#fff"
+				android:gravity="center">
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+					
+					
+					<LinearLayout
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight=".1"
+						android:gravity="center_vertical"
+						android:orientation="vertical"
+						
+						android:paddingStart="10dp">
+						
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingTop="5dp"
+							android:text="@string/pickup_time"
+							android:textSize="10sp" />
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							
+							android:gravity="center_vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								tool:text="22"
+								android:text='@{userBooking.getFormatedDAte(userBooking.from_date_time,"DAY")}'
+								android:textColor="@color/profile_top_back_color"
+								android:textSize="25sp"
+								android:textStyle="bold" />
+							
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:gravity="center_vertical"
+								android:orientation="vertical"
+								android:paddingStart="4dp">
+								
+								
+								<TextView
+									tool:text="MAY"
+									android:text='@{userBooking.getFormatedDAte(userBooking.from_date_time,"Month")}'
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:textColor="@color/profile_top_back_color"
+									android:textSize="10sp" />
+								
+								<TextView
+									
+									android:layout_width="wrap_content"
+									android:text='@{userBooking.getFormatedDAte(userBooking.from_date_time,"Time")}'
+									
+									tool:text="4:45 PM"
+									android:layout_height="wrap_content"
+									android:textSize="10sp" />
+							</LinearLayout>
+						
+						</LinearLayout>
+					
+					</LinearLayout>
+					
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/date_arrow" />
+					
+					<LinearLayout
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight=".1"
+						android:gravity="center_vertical"
+						android:orientation="vertical"
+						android:paddingStart="5dp">
+						
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingTop="5dp"
+							android:text="@string/drop_off_time"
+							android:textSize="10sp" />
+						
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							
+							android:gravity="center_vertical">
+							
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:textColor="@color/profile_top_back_color"
+								android:textSize="25sp"
+								tool:text="22"
+								android:text='@{userBooking.getFormatedDAte(userBooking.to_date_time,"DAY")}'
+								android:textStyle="bold" />
+							
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:gravity="center_vertical"
+								android:orientation="vertical"
+								android:paddingStart="4dp">
+								
+								
+								<TextView
+									android:id="@+id/textView"
+									android:layout_width="wrap_content"
+									tool:text="MAY"
+									android:text='@{userBooking.getFormatedDAte(userBooking.to_date_time,"Month")}'
+									android:layout_height="match_parent"
+									android:textColor="@color/profile_top_back_color"
+									android:textSize="10sp" />
+								
+								<TextView
+									android:text='@{userBooking.getFormatedDAte(userBooking.to_date_time,"Time")}'
+									tool:text="4:45 PM"
+									android:id="@+id/textView3"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:textSize="10sp" />
+							</LinearLayout>
+						
+						</LinearLayout>
+					
+					</LinearLayout>
+				</LinearLayout>
+			
+			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/gray_btn_bg_color" />
+			
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:padding="@dimen/_10sdp"
+				android:layout_height="match_parent">
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight=".1"
+					android:orientation="vertical">
+					
+					
+					<LinearLayout
+						android:onClick='@{()->activity.showDataPicker("FromDate", userBooking.to_date_time,activity.getCalenderIndtance())}'
+						android:layout_width="match_parent"
+						android:layout_height="35dp"
+						android:layout_marginEnd="5dp"
+						android:background="@drawable/rect_view_editprofile"
+						android:gravity="center">
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight=".1"
+							android:hint="@string/date_format"
+							android:text='@{user.fromDate }'
+							android:paddingStart="10dp"
+							android:textColor="@color/black"
+							android:textColorHint="@color/black"
+							android:textSize="12sp" />
+						
+						<ImageView
+							android:layout_width="25dp"
+							android:layout_height="25dp"
+							android:paddingEnd="10dp"
+							android:src="@drawable/dropdown_arrow"
+							android:tint="@color/black" />
+					</LinearLayout>
+				
+				</LinearLayout>
+				
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight=".1"
+					android:orientation="vertical"
+					android:paddingStart="5dp">
+					
+					
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:onClick='@{()->activity.showTimePicker("FromTime", user)}'						android:background="@drawable/rect_view_editprofile"
+						android:gravity="center">
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight=".1"
+							android:hint="@string/time_format"
+							
+							android:text="@{user.fromTime}"
+							android:paddingStart="10dp"
+							android:textColor="@color/black"
+							android:textColorHint="@color/black"
+							android:textSize="12sp" />
+						
+						<ImageView
+							android:layout_width="25dp"
+							android:layout_height="25dp"
+							android:paddingEnd="10dp"
+							android:src="@drawable/dropdown_arrow"
+							android:tint="@color/black" />
+					</LinearLayout>
+				</LinearLayout>
+			
+			</LinearLayout>
+		
+		
+		</LinearLayout>
+		
+		
+		<Button
+			android:id="@+id/submit_extended"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/bottom_corner"
+			android:padding="@dimen/_10sdp"
+			android:text="@string/submit"
+			android:layout_marginStart="@dimen/_10sdp"
+			android:layout_marginEnd="@dimen/_10sdp"
+			android:textColor="@color/ef_white" />
+	
+	
+	</LinearLayout>
+</layout>
+

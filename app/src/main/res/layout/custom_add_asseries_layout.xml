@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data.BeforePickupDetail.AsseriesData"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:padding="7dp"
+		android:gravity="center_vertical"
+		android:layout_width="match_parent"
+		android:background="#F4F4F4"
+		android:layout_height="wrap_content">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_weight=".4"
+			android:layout_margin="3dp"
+			android:background="@drawable/rect_add_asseries"
+			android:layout_height="wrap_content">
+			
+			<EditText
+				android:layout_width="match_parent"
+				android:background="@null"
+				android:padding="5dp"
+				android:hint="@string/enter_accessories_name"
+				android:textSize="12sp"
+				android:text="@={user.name}"
+				android:layout_height="match_parent" />
+		
+		</LinearLayout>
+		
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".1"
+				android:layout_margin="3dp"
+				android:background="@drawable/rect_add_asseries"
+				android:layout_height="wrap_content">
+				
+				<EditText
+					android:layout_width="match_parent"
+					android:background="@null"
+					android:padding="5dp"
+					android:textSize="12sp"
+					android:inputType="number"
+					android:hint="@string/Qty"
+					android:text="@={user.qty}"
+					android:layout_height="match_parent" />
+			</LinearLayout>
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:text="/"
+				android:textSize="20sp"
+				android:padding="3dp"
+				android:layout_marginTop="-5dp"
+				android:layout_height="match_parent" />
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".1"
+				android:layout_margin="3dp"
+				android:background="@drawable/rect_add_asseries"
+				android:layout_height="wrap_content">
+				
+				<EditText
+					android:layout_width="match_parent"
+					android:background="@null"
+					android:padding="5dp"
+					android:textSize="12sp"
+					android:hint="@string/amount"
+					android:text="@={user.price}"
+					android:inputType="number"
+					android:layout_height="match_parent" />
+			</LinearLayout>
+			
+			
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight=".2"
+				android:paddingEnd="5dp"
+				android:gravity="center_vertical"
+				android:layout_height="match_parent">
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_weight=".1"
+					
+					android:text="@string/Sar"
+					android:paddingStart="7dp"
+					android:layout_height="wrap_content" />
+				
+				<ImageView
+					android:layout_width="25dp"
+					android:src="@drawable/min_icon"
+					app:removeAccessories="@{user}"
+					android:layout_marginEnd="5dp"
+					android:tint="@color/profile_top_back_color"
+					android:layout_height="25dp" />
+				
+				<ImageView
+					android:layout_width="25dp"
+					
+					app:addAccessories="@{user}"
+					android:src="@drawable/header_plus_icon"
+					android:tint="@color/profile_top_back_color"
+					android:layout_height="25dp" />
+				
+				
+			
+			</LinearLayout>
+			
+		</LinearLayout>
+		
+		
+	
+	</LinearLayout>
+</layout>

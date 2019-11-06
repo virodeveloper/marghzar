@@ -1,0 +1,233 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+android {
+    compileSdkVersion 28
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    defaultConfig {
+
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        multiDexEnabled true
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+
+    }
+    flavorDimensions "content"
+    productFlavors {
+        owner {
+            minSdkVersion 21
+            applicationId 'pick.com.app.owner'
+            targetSdkVersion 28
+            versionCode 1
+            versionName '1.15'
+            dimension "content"
+            manifestPlaceholders = [facebookId: "395285601038826"]
+
+        }
+        user {
+            minSdkVersion 21
+            applicationId 'pick.com.app.user'
+            targetSdkVersion 28
+            versionCode 1
+            versionName '1.11'
+            dimension "content"
+            manifestPlaceholders = [facebookId: "361883434545014"]
+
+        }
+    }
+
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /*coroutine*/
+
+// sp, dp library
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    /*File Pcuiker*/
+    implementation 'com.github.hedzr:android-file-chooser:1.1.14'
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+
+    implementation "androidx.appcompat:appcompat:$android_support_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    /*Tab strip */
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    /*firebase auth fro social login*/
+    // Firebase Authentication
+    implementation "com.google.firebase:firebase-core:$firebase_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_auth"
+
+    /*Gmail login*/
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
+/*Facebook Lib*/
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+/*Networking Lib*/
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+
+/*Koitlin Shortcut*/
+    implementation 'com.github.kirtan403.k4kotlin:k4kotlin-core:1.0.0-beta1'
+
+/*shimmer*/
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+
+/*Recycleview*/
+    implementation "androidx.recyclerview:recyclerview:$android_support_version"
+
+/*Image Picker*/
+    //  implementation 'com.github.esafirm.android-image-picker:imagepicker:2.0.0'
+    implementation 'com.github.jkwiecien:EasyImage:1.3.1'
+
+    /*MAp*/
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+
+/*Dragger 2*/
+
+    def daggerVer = 2.12 // or latest version
+/*
+
+    implementation 'com.google.dagger:dagger:2.16'
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.14.1'
+*/
+/*lat lng*/
+    implementation 'com.github.delight-im:Android-SimpleLocation:v1.0.1'
+
+    /*Runtime Permisino*/
+    implementation 'ru.superjob:kotlin-permissions:1.0.3'
+
+    /*Circle ImageView*/
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    /*Glide*/
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'com.google.dagger:dagger:2.16'
+    implementation 'com.google.dagger:dagger-android:2.16'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'com.hbb20:ccp:2.3.2'
+
+
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+
+/*material dialog*/
+    implementation project(':library')
+    /*Link Textview*/
+    implementation 'com.tuyenmonkey:text-decorator:1.0.0'
+
+    /**/
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //testfairy sdk
+    implementation 'testfairy:testfairy-android-sdk:1.+@aar'
+
+/*Material Dialog*/
+
+    implementation 'com.afollestad.material-dialogs:core:2.0.0'
+
+    /*kotlinx-coroutines*/
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+
+/*pdf preivew*/
+    implementation 'com.github.barteksc:pdfium-android:1.9.0'
+
+    /*FCM Notification*/
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.github.pepperonas:materialdialog:0.3.4'
+
+/*Compressor*/
+    implementation 'id.zelory:compressor:2.1.0'
+
+/*Image Progressbar*/
+    // implementation 'com.emredavarci:circleprogressbar:1.0.4'
+
+    /*Spinner*/
+    implementation 'com.github.jaiselrahman:HintSpinner:1.0.0'
+    /*Picasso*/
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    /*Twitter*/
+    implementation 'com.twitter.sdk.android:tweet-composer:3.1.1'
+/*Pdfviewr*/
+    implementation 'com.github.manishkummar21:AndroidPdfViewer:1.0'
+    /*PAytabs*/
+    implementation project(':paytabs_sdk-v4.0.0')
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.9@aar') {
+        transitive = true;
+    }
+    implementation 'com.wdullaer:materialdatetimepicker:4.1.2'
+
+    implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.android.support:support-v4:28.2.0'
+    implementation 'nl.garvelink.oss:iban:1.6.1'
+    implementation 'com.github.dbachelder:CreditCardEntry:1.4.9'
+
+}
+apply plugin: 'com.google.gms.google-services'

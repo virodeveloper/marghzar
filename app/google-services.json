@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "685046542579",
+    "firebase_url": "https://pick-cf0f1.firebaseio.com",
+    "project_id": "pick-cf0f1",
+    "storage_bucket": "pick-cf0f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685046542579:android:3db86db3f3083438",
+        "android_client_info": {
+          "package_name": "com.pick.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685046542579-jl66mork9ckpi0672e7n9mbpv5gead0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_vU3W5JBG4BIBYFqDMjbC-vJE7KXwPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685046542579:android:7e9fa85476f56af9",
+        "android_client_info": {
+          "package_name": "pick.com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685046542579-f2qgvr8o7j3ms4a7p2ac294ha77mf112.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pick.com.app",
+            "certificate_hash": "3914633c0c2b1f1f6b9afca34cd8474358d4e4b4"
+          }
+        },
+        {
+          "client_id": "685046542579-jl66mork9ckpi0672e7n9mbpv5gead0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_vU3W5JBG4BIBYFqDMjbC-vJE7KXwPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685046542579-jl66mork9ckpi0672e7n9mbpv5gead0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

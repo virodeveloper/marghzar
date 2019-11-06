@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+	<import type="android.view.View"/>
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+	
+	</data>
+	
+	<androidx.core.widget.NestedScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="5dp"
+		android:background="@color/ef_white">
+		
+		<LinearLayout
+			android:id="@+id/layoutperkm"
+			android:visibility="@{user}"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:layout_marginEnd="5dp"
+			android:padding="5dp"
+			android:orientation="horizontal">
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"
+				android:textColor="@color/change_screen_text_color"
+				android:textSize="15sp"
+				android:text="@string/delivery_charges_for_one_km"/>
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+				android:textSize="16sp"
+				
+				android:text='@{user.data.charges_kilometer +" "+ String.format(@string/Sar)}'
+				
+				android:textColor="@color/skyblue" />
+			
+		</LinearLayout>
+		
+		<View
+			android:visibility="@{user}"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="10dp"
+			android:background="@color/view_color"/>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:layout_marginEnd="5dp"
+			android:padding="5dp"
+			android:layout_marginTop="10dp"
+			android:orientation="vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/skyblue"
+				android:textSize="15sp"
+				android:text="@string/pick_address"/>
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:text="@{user.data.pick_location_address}"
+				android:textColor="@color/change_screen_text_color" />
+		
+		</LinearLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="10dp"
+			android:background="@color/view_color"/>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:layout_marginEnd="5dp"
+			android:padding="5dp"
+			android:visibility="@{user.data.isdifferentcity?View.VISIBLE:View.GONE}"
+			android:layout_marginTop="10dp"
+			android:orientation="vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/skyblue"
+				android:textSize="15sp"
+				android:text="@string/drop_address"/>
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerView"
+				android:layout_width="match_parent"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				android:layout_height="wrap_content"
+				></androidx.recyclerview.widget.RecyclerView>
+		
+		</LinearLayout>
+	
+	</LinearLayout>
+	
+	</androidx.core.widget.NestedScrollView>
+</layout>
+

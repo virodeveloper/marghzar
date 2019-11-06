@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:bind="http://schemas.android.com/tools">
+	
+	<data>
+	
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.RegistrationModel"/>
+	
+	</data>
+	
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+
+		android:id="@+id/main_content"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_scrollFlags="scroll|enterAlways"
+		>
+	
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_scrollFlags="scroll|enterAlways"
+		android:orientation="vertical">
+		
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appbar"
+			app:layout_scrollFlags="scroll|enterAlways"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+			android:fitsSystemWindows="true">
+			<com.google.android.material.appbar.CollapsingToolbarLayout
+				android:id="@+id/collapsing_toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:layout_scrollFlags="scroll|enterAlways"
+				>
+		
+				<LinearLayout
+					app:layout_scrollFlags="scroll|enterAlways"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:layout_height="wrap_content">
+
+					<include
+						layout="@layout/profile_top_layout"
+						bind:user="@{user.data}" />
+
+					<com.ogaclejapan.smarttablayout.SmartTabLayout
+			android:id="@+id/tabs"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			app:tabMode="scrollable"
+			app:tabContentStart="72dp"
+			app:stl_indicatorWithoutPadding="false"
+			app:stl_indicatorInFront="false"
+			app:stl_indicatorInterpolation="smart"
+			app:stl_indicatorGravity="bottom"
+			app:stl_indicatorColor="#40C4FF"
+			app:stl_indicatorThickness="4dp"
+			app:stl_indicatorWidth="auto"
+			app:stl_indicatorCornerRadius="2dp"
+			
+			
+			
+			app:stl_defaultTabBackground="@color/profile_top_back_color"
+			app:stl_defaultTabTextAllCaps="true"
+			app:stl_defaultTabTextColor="#fff"
+			app:stl_defaultTabTextSize="12sp"
+			app:stl_defaultTabTextHorizontalPadding="16dp"
+			
+			app:stl_distributeEvenly="true"
+			app:stl_clickable="true"
+			app:stl_titleOffset="24dp"
+			
+			app:stl_drawDecorationAfterTab="true"
+			/>
+				
+				</LinearLayout>
+				
+			</com.google.android.material.appbar.CollapsingToolbarLayout>
+		</com.google.android.material.appbar.AppBarLayout>
+		
+		<androidx.viewpager.widget.ViewPager
+			android:id="@+id/viewPager"
+			android:layout_width="match_parent"
+			app:layout_scrollFlags="scroll|enterAlways"
+			android:layout_height="match_parent"
+			android:layout_below="@+id/tabs">
+		</androidx.viewpager.widget.ViewPager>
+	
+	</LinearLayout>
+	
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<import type="android.view.View" />
+		
+		<variable
+			name="user"
+			type="pick.com.app.varient.owner.pojo.BookingModel.Data"/>
+	</data>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical">
+		
+		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/swiperefresh"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+			
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center"
+				android:orientation="vertical">
+		
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recycleview"
+			android:layout_width="match_parent"
+			
+			
+			app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+			tools:listitem="@layout/row_layout_favvehcil"
+			android:layout_height="match_parent"/>
+			<TextView
+				android:id="@+id/textViewNoDataFound"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:visibility="gone"
+				android:text="@string/no_data_found"
+				android:textSize="@dimen/_20sdp"
+				android:layout_height="wrap_content" />
+			</LinearLayout>
+		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+		
+		
+	</LinearLayout>
+</layout>
+
