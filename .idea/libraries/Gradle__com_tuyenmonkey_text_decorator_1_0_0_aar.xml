@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tuyenmonkey:text-decorator:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-text-decorator-1.0.0.aar/8dc3f2387d25a3c81a91d251c751eadb/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-text-decorator-1.0.0.aar/8dc3f2387d25a3c81a91d251c751eadb/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tuyenmonkey/text-decorator/1.0.0/b8786445f6bae733922493f5a47223768ae43322/text-decorator-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

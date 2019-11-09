@@ -1,6 +1,8 @@
 package pick.com.app
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +12,7 @@ import okhttp3.ResponseBody
 import pick.com.app.base.BaseActivity
 import pick.com.app.interfaces.onResponse
 import pick.com.app.uitility.session.SessionManager
+import pick.com.app.varient.user.pojo.FilterModel.Companion.hashmap
 import pick.com.app.varient.user.pojo.RegistrationModel
 import pick.com.app.webservices.ApiServices
 import pick.com.app.webservices.Urls
@@ -40,23 +43,33 @@ class Settlement : AppCompatActivity(), onResponse {
             Toast.makeText(applicationContext,"Request Sended",Toast.LENGTH_SHORT).show()
 
         }
+        if (methodtype == Urls.REQUEST) {
+            var model = result as Model
+            if(model.status.equals("0")){
+                setContentView(R.layout.activity_settlement)
+                var alertDialog: AlertDialog? = BaseActivity.activity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setMessage(R.string.checkup)
+                        .setPositiveButton(R.string.ok, DialogInterface.OnClickListener { dialog, id ->
+                            finish()
+                        })
+
+
+                    // Create the AlertDialog object and return it
+                    builder.create()
+                }
+                alertDialog!!.show()
+            }
+            else{
+                setContentView(R.layout.activity_settlement)
+
+                startactivity()
+            }
+
+        }
     }
 
-    override fun onError(error: String?) {
-
-        Toast.makeText(applicationContext,"you dont",Toast.LENGTH_SHORT).show()
-    }
-
-    lateinit var  editText: EditText
-    lateinit var  editText2: EditText
-    lateinit var  editText3: EditText
-    lateinit var  editText4: EditText
-    lateinit var  spinner: Spinner
-    lateinit var  btn: Button
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settlement)
+    private fun startactivity() {
         editText=findViewById(R.id.amount)
         editText2=findViewById(R.id.baccount)
         editText3=findViewById(R.id.iban)
@@ -74,18 +87,47 @@ class Settlement : AppCompatActivity(), onResponse {
             this
         )
 
-       // var datamodel:ArrayAdapter<String>
+        // var datamodel:ArrayAdapter<String>
 
         spinner.setOnItemSelectedListener(object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(arg0:AdapterView<*>, arg1: View, arg2:Int,
                                         arg3:Long) {
-              bank = spinner.getItemAtPosition(arg2).toString()
+                bank = spinner.getItemAtPosition(arg2).toString()
 
             }
             override fun onNothingSelected(arg0:AdapterView<*>) {
                 //optionally do something here
             }
         })
+    }
+
+    override fun onError(error: String?) {
+
+        Toast.makeText(applicationContext,"you dont",Toast.LENGTH_SHORT).show()
+    }
+
+    lateinit var  editText: EditText
+    lateinit var  editText2: EditText
+    lateinit var  editText3: EditText
+    lateinit var  editText4: EditText
+    lateinit var  spinner: Spinner
+    lateinit var  btn: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+        val hashma = HashMap<String, Any>()
+        hashma["user_id"] =SessionManager.getLoginModel(this@Settlement).data.user_id
+        ApiServices<Model>().callApi(
+            Urls.REQUEST,
+            this,
+            hashma,
+            Model::class.java,
+            true,
+            this
+        )
+
     }
 
     fun dosettlement(view: View) {

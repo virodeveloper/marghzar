@@ -50,6 +50,9 @@ class MyProfileFragment : Fragment(), onResponse {
                         .putExtra("url", model.payment_url+","+"Payment"))
             }
         }
+        if (methodtype == Urls.USER_WALLET) {
+            val result = result as RegistrationModel
+        }
         else {
             val result = result as RegistrationModel
 
@@ -94,8 +97,11 @@ class MyProfileFragment : Fragment(), onResponse {
 
        // view=inflater.inflate(pick.com.app.R.layout.activity_profile, container, false)
 
+
+
         return  binding.getRoot()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

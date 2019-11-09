@@ -69,6 +69,8 @@ class Urls {
         var ADDWALLETAMOUNT="addamount_wallet"
         var SETTLEMENT="settlementRequest"
         var BANK="banks"
+        var FINALPAYMENT="finalPayment"
+        var REQUEST="request"
 
     }
 

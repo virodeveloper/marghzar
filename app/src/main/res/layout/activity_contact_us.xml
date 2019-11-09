@@ -118,7 +118,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="150dp"
 					android:textSize="13sp"
-					android:enabled="false"
+					android:enabled="true"
 					android:gravity="top"
 					android:hint="@string/message"
 					android:text="@={user.data.message}"

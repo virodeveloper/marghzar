@@ -55,20 +55,20 @@ class ContactUsActivity : BaseActivity() {
         }
     }
     lateinit var activityContactUsBinding:ActivityContactUsBindingImpl
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        supportActionBar!!.hide()
-//
-//
-//        val hashMap = HashMap<String, Any>()
-//        hashMap["user_id"] = SessionManager.getLoginModel(this).data.user_id
-//
-//        ApiServices<RegistrationModel.ContactUS>().callApi(
-//            Urls.GET_CONTACT_US, this, hashMap,
-//            RegistrationModel.ContactUS::class.java, true, this
-//        )
-//
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        supportActionBar!!.hide()
+
+
+        val hashMap = HashMap<String, Any>()
+        hashMap["user_id"] = SessionManager.getLoginModel(this).data.user_id
+
+        ApiServices<RegistrationModel.ContactUS>().callApi(
+            Urls.GET_CONTACT_US, this, hashMap,
+            RegistrationModel.ContactUS::class.java, true, this
+        )
+
+    }
 
     fun submitQuery(url:String,view: View){
 

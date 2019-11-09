@@ -70,7 +70,7 @@ class FillBookingActivity : BaseActivity() {
                 var result = result as BookingModel
                 if (result.status == 1) {
                      startActivity(Intent(this, WalletActivity::class.java).putExtra("booking_id", booking_id).
-                     putExtra("amount", payable_amount))
+                     putExtra("amount", payable_amount).putExtra("payment_type","i"))
                     // showMessageWithError(message = result.description, isfinish = true)
                 } else {
                     onError(result.description)

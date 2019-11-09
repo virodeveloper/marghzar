@@ -8,7 +8,10 @@
 		<variable
 			name="searchodel"
 			type="pick.com.app.varient.user.pojo.SearchBookingModel"/>
-	
+
+		<variable
+			name="user"
+			type="pick.com.app.varient.user.pojo.SearchBookingModel"/>
 	</data>
 	
 	<LinearLayout
@@ -98,7 +101,7 @@
 					android:checked="@{searchodel.isdeliveryatdoor}"
 					android:layout_height="wrap_content" />
 			</LinearLayout>
-			
+
 			<View
 				android:layout_width="match_parent"
 				android:layout_height="1dp"
@@ -127,9 +130,13 @@
 					android:clickable="true"
 					app:onBackPress="@{searchodel}"
 					android:layout_height="wrap_content" />
+
+
 			
 			</LinearLayout>
-			
+
+
+
 			<View
 				android:layout_width="match_parent"
 				android:layout_height="1dp"

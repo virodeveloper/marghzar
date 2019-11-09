@@ -47,7 +47,7 @@
 				
 				<TextView
 					android:layout_width="wrap_content"
-					android:text='@{@string/amointinSar(user.before_pickup_detail.fuel_amount)}'
+					android:text='@{@string/Liters(user.before_pickup_detail.fuel_amount)}'
 					android:paddingEnd="10dp"
 					android:layout_height="wrap_content" />
 			</LinearLayout>

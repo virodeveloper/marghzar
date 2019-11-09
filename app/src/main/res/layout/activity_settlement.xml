@@ -11,28 +11,28 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pick Settlemnet"
+            android:text="@string/settlement"
             android:textSize="@dimen/_30sdp"
             android:layout_gravity="center"
             android:textColor="@color/colorPrimary"/>
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_height="40dp"
-            android:hint="Amount"
-            android:inputType="number"
-            android:id="@+id/amount"/>
-        <EditText
+        <Spinner
             android:layout_width="300dp"
             android:layout_height="40dp"
+            android:hint="Bank name"
             android:layout_marginTop="@dimen/_30sdp"
-            android:hint="Iban"
-            android:id="@+id/iban"/>
-
+            android:id="@+id/bankname"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:hint="Account Title"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:id="@+id/accountname"/>
         <EditText
             android:layout_width="300dp"
             android:layout_height="40dp"
@@ -42,15 +42,20 @@
         <EditText
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:hint="Account Name"
             android:layout_marginTop="@dimen/_30sdp"
-            android:id="@+id/accountname"/>
-        <Spinner
+            android:hint="Iban"
+            android:id="@+id/iban"/>
+
+
+        <EditText
             android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:hint="Bank name"
             android:layout_marginTop="@dimen/_30sdp"
-            android:id="@+id/bankname"/>
+            android:layout_height="40dp"
+            android:hint="Amount"
+            android:inputType="number"
+            android:id="@+id/amount"/>
+
+
         <Button
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_50sdp"

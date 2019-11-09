@@ -573,37 +573,37 @@
 							android:background="@drawable/rect_view_editprofile"
 							android:gravity="center_vertical"
 							android:orientation="horizontal">
-							
+
 							<EditText
 								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_weight=".1"
 								android:background="@null"
 								android:gravity="center"
-								android:hint="@string/amount"
+								android:hint="@string/km"
 								android:inputType="number"
 								android:maxLength="4"
 								android:text="@={model.one_day_free_kilometer}"
-								
+
 								android:textColor="#353535"
 								android:textColorHint="#71353535"
 								android:textSize="13sp"
-								
-								
+
+
 								/>
 						
 						
 						</LinearLayout>
-						
-						
+
+
 						<TextView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							
-							android:text="@string/Sar"
+
+							android:text="KM"
 							android:textColor="#353535"
-							
-							
+
+
 							android:textSize="13sp" />
 					
 					</LinearLayout>

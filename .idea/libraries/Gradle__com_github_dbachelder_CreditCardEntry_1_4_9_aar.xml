@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.dbachelder:CreditCardEntry:1.4.9@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-CreditCardEntry-1.4.9.aar/8c418b11f371a6b8b94527676b231547/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-CreditCardEntry-1.4.9.aar/8c418b11f371a6b8b94527676b231547/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

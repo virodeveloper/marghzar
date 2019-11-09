@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.*
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.databinding.DataBindingUtil
@@ -115,6 +116,14 @@ var myCalendar=Calendar.getInstance()
 
 
             }
+            Urls.FINALPAYMENT->{
+
+                val result = result as BookingModel
+                if(result.status == 1){
+
+                    showMessageWithError("payment done", true)
+                }
+            }
             else ->{
                 val result = result as BookingModel
 
@@ -174,9 +183,13 @@ var myCalendar=Calendar.getInstance()
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, pick.com.app.R.layout.user_booking_details)
         val bookingDetail = ToolbarCustom(ToolbarCustom.lefticon, getString(pick.com.app.R.string.booking_detail), ToolbarCustom.NoIcon, ToolbarCustom.NoIcon)
+
         binding.toolbar = bookingDetail
         bookingModel = intent.extras!!.get("model") as BookingModel.Data
         binding.user = bookingModel
+        if(bookingModel.booking_status==5){
+            paylist.visibility=VISIBLE
+        }
         left_Icon.onClick {
             onBackPressed()
         }
@@ -184,6 +197,8 @@ var myCalendar=Calendar.getInstance()
         check_up_before_view_user()
 
         check_up_after_view()
+
+
 
         cancel_booking.setOnClickListener {
             when (bookingModel.booking_status) {
@@ -231,7 +246,10 @@ var myCalendar=Calendar.getInstance()
                 }
 
                 5 -> {
-                    changeStatus("6", bookingModel)
+
+                 //   Toast.makeText(applicationContext,"came",Toast.LENGTH_SHORT).show()
+                    lastpayment(bookingModel)
+                    //changeStatus("6", bookingModel)
                 }
 
                 6 -> {
@@ -257,6 +275,21 @@ var myCalendar=Calendar.getInstance()
         hashmap["booking_status"] = status
 
         ApiServices<BookingModel>().callApi(Urls.CHANGE_BOKING_STATUS_USER, this, hashmap, BookingModel::class.java, true, activity)
+    }
+
+    fun lastpayment(data : BookingModel.Data){
+
+        this.data=data
+
+        val hashmap = HashMap<String, Any>()
+//        hashmap["user_id"] = SessionManager.getLoginModel(activity).data.user_id
+        var bookingid = data.booking_id!!
+        var value = data.extra_payable_amount!!
+        startActivity(Intent(activity, WalletActivity::class.java).putExtra("f_booking", bookingid).
+            putExtra("extra_amount", ""+value).putExtra("payment_type","f"))
+//        hashmap["payment_type"] = "f"
+//        ApiServices<BookingModel>().callApi(Urls.FINALPAYMENT, this, hashmap, BookingModel::class.java, true, activity)
+
     }
 
     fun cancelBooking(status : String, data : BookingModel.Data) {

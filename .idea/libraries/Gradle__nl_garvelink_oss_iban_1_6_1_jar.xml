@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: nl.garvelink.oss:iban:1.6.1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/nl.garvelink.oss/iban/1.6.1/be5e66abb393dbcb3f29daac297e53644d3406c2/iban-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/nl.garvelink.oss/iban/1.6.1/41cf088969d55275911760b1090aef686ffdc911/iban-1.6.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/nl.garvelink.oss/iban/1.6.1/f91748b847e17d259d4d194aa0c29e5e0fcf5136/iban-1.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.manishkummar21:AndroidPdfViewer:1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-AndroidPdfViewer-1.0.aar/81fe101cfc6a0ff619448e6fb89d30fe/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-AndroidPdfViewer-1.0.aar/81fe101cfc6a0ff619448e6fb89d30fe/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

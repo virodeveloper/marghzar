@@ -76,7 +76,7 @@ class BookingModel : Serializable {
         for (item in arrayList) {
             when {
 
-                item.qty.trim() == "" -> {
+                item.qty == null || item.qty.trim() =="" -> {
                     showMessage(view, view.context.getString(R.string.please_enter_accessories_qty))
 
 

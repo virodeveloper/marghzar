@@ -110,7 +110,7 @@ class DrawerModel {
         ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.manage_availability),drawerFragment,ManageAvailabilityActivity(),activity))
         ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.payment),drawerFragment,
             PaymentActivity(),activity))
-        ower_drawer_list.add(DrawerModel("Settlement",drawerFragment,Settlement(),activity))
+        ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.settlement),drawerFragment,Settlement(),activity))
         ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.about_us),drawerFragment,StaticWebUrlActivity(),activity,"about_us_owner,${activity.getString(R.string.about_us)}"))
         ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.contact_us),drawerFragment,ContactUsActivity(),activity))
         ower_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.plolicies),drawerFragment,StaticWebUrlActivity(),activity,"policies_owner,${activity.getString(R.string.policies)}"))
@@ -133,7 +133,7 @@ class DrawerModel {
         user_drawer_list.add(selcteditem)
         user_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.my_booking),drawerFragment,
             MyBookingFragmant(),activity))
-       user_drawer_list.add(DrawerModel("Settlement",drawerFragment,Settlement(),activity))
+       user_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.settlement),drawerFragment,Settlement(),activity))
         //user_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.wallet),drawerFragment,UnderDovelopmentProcessFragment(),activity))
 
         user_drawer_list.add(DrawerModel(context.getString(pick.com.app.R.string.my_profile),drawerFragment,MyProfileFragment(),activity,R.drawable.edit_icon))

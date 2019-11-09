@@ -24,6 +24,7 @@ import pick.com.app.uitility.helpper.Redirection
 import pick.com.app.uitility.location.AppLocationActivity
 import pick.com.app.uitility.session.SessionManager
 import pick.com.app.varient.user.pojo.FilterModel.Companion.hashmap
+import pick.com.app.varient.user.pojo.RegistrationModel
 import pick.com.app.varient.user.pojo.WalletModel
 import pick.com.app.webservices.ApiServices
 import pick.com.app.webservices.Urls
@@ -53,6 +54,7 @@ class AddWalletActivity : BaseActivity() {
             var model = result as WalletModel
         }
         else if(methodtype == Urls.ADDWALLETAMOUNT) {
+            var model = result as RegistrationModel
 
             Toast.makeText(applicationContext,"Your wallet updated",Toast.LENGTH_SHORT).show()
 

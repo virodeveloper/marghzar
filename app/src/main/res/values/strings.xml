@@ -149,7 +149,7 @@
     <string name="pleaserestartappnotgettinglocationperoperly">Please restart App as not getting location properly</string>
     <string name="pleaserebootyourdevice">Please reboot your device</string>
     <string name="add_image">ADD\nImage</string>
-    <string name="fuel_amount_before_pick_up">Fuel Amount Before Pick Up</string>
+    <string name="fuel_amount_before_pick_up">Fuel Before Pick Up</string>
     <string name="before_pick_up_kilometer">Before Pick Up kilometer</string>
     <string name="before_pickup_car_picture">Before Pickup car Picture</string>
     <string name="checkup_before">Checkup Before</string>
@@ -210,7 +210,8 @@
     <string name="trip_completion_request">Trip completion request</string>
     <string name="check_after_request_submitted">Check after request submitted</string>
     <string name="dropped">Dropped</string>
-    <string name="Liters">Liters</string>
+
+    <string name="checkup">Ceckup Before Will Work 15 Min Prior Booking Start Time</string>
 
     <string name="cancelled_by_user">Cancelled by user</string>
     <string name="cancelled_by_vehicle_owner">Cancelled by vehicle owner</string>
@@ -264,6 +265,9 @@
 
     <string name="freekmexcess">Free Km %s km,Excess %s SAR/Km</string>
     <string name="amointinSar"> %s Sar</string>
+    <string name="Liters"> %s Liters</string>
+
+
     <string name="fuelkm"> %s KM</string>
     <string name="report_empty_message">Please enter report</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDNAzt7lqYE3nU0RXPLii3s79Me9EO2riU</string>
@@ -288,8 +292,9 @@
     <string name="please_enter_km">Please enter km</string>
     <string name="please_enter_after_check_up_fuel_amt">Please enter after check up fuel amount</string>
     <string name="please_enter_after_check_up_km">Please enter after check up km</string>
-    <string name="please_select_bulk_type">Please select bulk type</string>
-    <string name="please_select_bulk_price">Please enter bulk price</string>
+    <string name="please_select_Discount_type">Please select bulk type</string>
+    <string name="settlement">Settlement</string>
+    <string name="please_select_Discount_price">Please enter bulk price</string>
     <string name="select_a_country">SELECT A COUNTRY</string>
     <string name="please_select_from_date_and_time">Please select from date and time</string>
     <string name="vehicle_brand_model">Vehicle Brand and Model</string>

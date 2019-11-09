@@ -222,13 +222,33 @@ class HomeFragment : BaseFragment(), onLocationFromMap {
             binding.user!!.fromDateTimeZone = "${date!!.time}"
             binding.user!!.toDateTimeZone = "${date_to!!.time}"
 
-            if(binding.user!!.fromDateTimeZone<binding.user!!.toDateTimeZone){
+               // .toLong())/1000L
+
+            var b=(binding.user!!.fromDateTimeZone.toLong())/1000L
+
+            var d=(binding.user!!.toDateTimeZone.toLong())/1000L
+
+            var e=d.toInt()-b.toInt()
+
+            if (binding.user!!.toDate==binding.user!!.fromDate){
+                if(e>=3600){
+                    val bundle = Bundle()
+                    bundle.putSerializable("model", binding.user!!)
+                    Redirection().goToVechileListingUser(activity = activity!!, bundle = bundle)
+
+                }
+                else
+                    activity.toast("Booking Time Should be Atleast 1 hour")
+
+
+            }
+
+           else{
                 val bundle = Bundle()
                 bundle.putSerializable("model", binding.user!!)
                 Redirection().goToVechileListingUser(activity = activity!!, bundle = bundle)
+
             }
-            else
-                activity.toast("Error Occured")
 
         }
 
@@ -264,10 +284,15 @@ class HomeFragment : BaseFragment(), onLocationFromMap {
         }
 
 
-        if (binding.user!!.toTime<=binding.user!!.fromTime){
+        if (binding.user!!.toDate==binding.user!!.fromDate){
+            if (binding.user!!.toTime<=binding.user!!.fromTime){
                 activity.toast("please Select different time")
-            return false
+                return false
+            }
+            else
+            return true
         }
+
 
 
 ////        else if (binding.user!!.toTime<=binding.user!!.fromTime+1) {

@@ -28,6 +28,7 @@ import pick.com.app.databinding.UserPaymentScreenBinding
 import pick.com.app.uitility.helpper.Redirection
 import pick.com.app.uitility.location.AppLocationActivity
 import pick.com.app.uitility.session.SessionManager
+import pick.com.app.varient.user.pojo.BookingModel
 import pick.com.app.varient.user.pojo.FilterModel.Companion.hashmap
 import pick.com.app.varient.user.pojo.RegistrationModel
 import pick.com.app.varient.user.pojo.WalletModel
@@ -44,9 +45,12 @@ class WalletActivity : BaseActivity() {
     lateinit var checkBox: CheckBox
     lateinit var textView: TextView
     lateinit var modll:WalletModel
+    lateinit var extrapayable:String
+    lateinit var exbookingid:String
+    lateinit var payment_type:String
     lateinit var wall:String
-    var new:Int=0
-    var newWallet=0
+    var new:Double=0.0
+    var newWallet:Double=0.0
     lateinit var co:CountryCodePicker
 
     var am:String="Wallet Amount"
@@ -64,9 +68,19 @@ class WalletActivity : BaseActivity() {
                 finish()
                 //model.payment_url
             }
-        } else if(methodtype == Urls.USER_WALLET) {
+        }else if(methodtype==Urls.FINALPAYMENT){
+            val result = result as WalletModel
+            if(result.status == 1){
+                finish()
+                Toast.makeText(applicationContext,"Payment Done",Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        else if(methodtype == Urls.USER_WALLET) {
             var model = result as WalletModel
-            am=model.wallet_amount
+            wall=model.wallet_amount
+            textView.text=wall
         }
         else if(methodtype == Urls.BOOKING_PAYMENT) {
 
@@ -82,6 +96,7 @@ class WalletActivity : BaseActivity() {
 
         super.onCreate(savedInstanceState)
 
+        userWallet()
 
         binding = DataBindingUtil.setContentView(this, R.layout.user_payment_screen)
         toolbarCustom = ToolbarCustom(ToolbarCustom.lefticon, resources.getString(R.string.payment), ToolbarCustom.NoIcon, ToolbarCustom.NoIcon)
@@ -94,18 +109,45 @@ class WalletActivity : BaseActivity() {
         wall=sharedPreferences.getString("wallet","100")
 
 
-        textView.text=wall.toString()
+
 
 //
+        binding.model = WalletModel()
+        binding.redirection = this@WalletActivity
+        left_Icon.onClick { onBackPressed() }
+
+
+        payment_type=intent.getStringExtra("payment_type")
+
+        if (payment_type.equals("f")){
+            extrapayable=intent.getStringExtra("extra_amount")
+            exbookingid=intent.getStringExtra("f_booking")
+            payable_amount=extrapayable
+            bookingId=exbookingid
+            binding.payableAmount.setText(payable_amount + " SAR")
+        }
+        else if (payment_type.equals("i")){
+
+            bookingId = intent.getStringExtra("booking_id")
+            payable_amount = intent.getStringExtra("amount")
+            binding.payableAmount.setText(payable_amount + " SAR")
+
+        }
+
+
+
 
 
         checkBox=findViewById(R.id.cb_wallet)
 
         checkBox.setOnClickListener(View.OnClickListener {
             if (checkBox.isChecked){
-                if(wall.toInt()>0 && payable_amount.toInt()>wall.toInt())
-                {u=2}
-                else{u=1}
+                if(wall.toDouble()>0){
+                    if(payable_amount.toDouble()>wall.toDouble())
+                    {u=2}
+                    else{u=1}
+
+                }
 
 
 
@@ -118,13 +160,7 @@ class WalletActivity : BaseActivity() {
 
 
 
-        binding.model = WalletModel()
-        binding.redirection = this@WalletActivity
-        left_Icon.onClick { onBackPressed() }
-        bookingId = intent.getStringExtra("booking_id")
-        payable_amount = intent.getStringExtra("amount")
 
-        binding.payableAmount.setText(payable_amount + " SAR")
 
 //        if(u==1){
 //            if(payable_amount.toInt()>wall.toInt()){
@@ -210,8 +246,8 @@ class WalletActivity : BaseActivity() {
                     if(payable_amount=="0"){
                         payable_amount = intent.getStringExtra("amount")
                     }
-                    new=payable_amount.toInt()-wall.toInt()
-                    newWallet=payable_amount.toInt()-new
+                    new=payable_amount.toDouble()-wall.toDouble()
+                    newWallet=payable_amount.toDouble()-new
                     payable_amount=new.toString()
                     val intent = Intent(this, PayTabActivity::class.java)
                     intent.putExtra(PaymentParams.MERCHANT_EMAIL, "turkiothman@hotmail.com")
@@ -263,13 +299,24 @@ class WalletActivity : BaseActivity() {
                 }
 
                 else if(u==1){
+
                     hashmap["user_id"] = SessionManager.getLoginModel(this).data.user_id
                     hashmap["booking_id"] = bookingId
                     hashmap["amount"] = payable_amount
                     hashmap["payment_type"] = u
-                    ApiServices<WalletModel>().callApi(Urls.BOOKING_PAYMENT, this, hashmap, WalletModel::class.java,
-                        true, this)
+                    if(payment_type.equals("i")){
+
+                        ApiServices<WalletModel>().callApi(Urls.BOOKING_PAYMENT, this, hashmap, WalletModel::class.java,
+                            true, this)
+                    }
+                    else if (payment_type.equals("f")){
+
+                        ApiServices<WalletModel>().callApi(Urls.FINALPAYMENT, this, hashmap, WalletModel::class.java, true, activity)
+
+                    }
                 }
+
+
                 else
                     Toast.makeText(activity,"Something terrible",Toast.LENGTH_SHORT).show();
 
@@ -306,10 +353,16 @@ class WalletActivity : BaseActivity() {
 //            hashmap["booking_id"] = data.getStringExtra(PaymentParams.ORDER_ID)
 
 
+            if(payment_type.equals("f")){
+                ApiServices<WalletModel>().callApi(Urls.FINALPAYMENT, this, hashmap, WalletModel::class.java, true, activity)
+            }
+            else{
+                ApiServices<WalletModel>().callApi(Urls.BOOKING_PAYMENT, this, hashmap, WalletModel::class.java,
+                    true, this)
+
+            }
 
 
-            ApiServices<WalletModel>().callApi(Urls.BOOKING_PAYMENT, this, hashmap, WalletModel::class.java,
-                true, this)
 
 
 //            Toast.makeText(this, data.getStringExtra(PaymentParams.RESPONSE_CODE), Toast.LENGTH_LONG).show();

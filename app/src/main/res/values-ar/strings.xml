@@ -183,6 +183,7 @@
 	<string name="trip_completion_request">Trip completion request</string>
 	<string name="check_after_request_submitted">تم تقدیم طلب الفحص قبل التسلیم</string>
 	<string name="dropped">تم التسلیم</string>
+	<string name="checkup">Ceckup قبل ستعمل 15 دقيقة قبل وقت بدء الحجز</string>
 	<string name="cancelled_by_user">تم الإلغاء من قبل العمیل</string>
 	<string name="cancelled_by_vehicle_owner">تم الإلغاء من قبل صاحب المركبة</string>
 	<string name="add_rating">إضافة تقییم</string>
@@ -259,9 +260,10 @@
 	<string name="please_enter_km">آدخل الكیلومترات</string>
 	<string name="please_enter_after_check_up_fuel_amt">أدخل مبلغ الوقود للفحص ماقبل التسلیم</string>
 	<string name="please_enter_after_check_up_km">أدخل الكیلومترات للفحص ماقبل التسلیم</string>
-	<string name="please_select_bulk_type">أختر النوع دفعة واحدة</string>
-	<string name="please_select_bulk_price">أدخل السعر دفعة واحدة</string>
+	<string name="please_select_Discount_type">أختر النوع دفعة واحدة</string>
+	<string name="please_select_Discount_price">أدخل السعر دفعة واحدة</string>
 	<string name="select_a_country">أختر الدولة</string>
+	<string name="settlement">مستوطنة</string>
 	<string name="please_select_from_date_and_time">أختر تاریخ ووقت بدایة الفترة</string>
 	<string name="vehicle_brand_model">ماركة المركبة والمودیل</string>
 	<string name="select_seat">أختر المقعد</string>

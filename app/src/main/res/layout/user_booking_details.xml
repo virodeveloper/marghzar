@@ -559,6 +559,8 @@
 					android:layout_height="wrap_content">
 					
 					<include layout="@layout/amount_layout_booking_details"
+						android:visibility="gone"
+						android:id="@+id/paylist"
 						bind:user="@{user}"/>
 				</LinearLayout>
 				

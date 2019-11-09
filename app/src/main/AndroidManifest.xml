@@ -142,6 +142,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".varient.user.ui.activity.UserBookingDetailActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".varient.user.ui.activity.EditProfileActivity"

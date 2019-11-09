@@ -1,6 +1,8 @@
 package pick.com.app.varient.owner.activity
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.check_up_after_view.*
 import kotlinx.android.synthetic.main.check_up_before_fill_form.*
 import kotlinx.android.synthetic.main.check_up_before_view_user.*
 import kotlinx.android.synthetic.main.toolbar.*
+import pick.com.app.MyApplication.Companion.alertDialog
 import pick.com.app.R
 import pick.com.app.base.BaseActivity
 import pick.com.app.base.PreviewActivity
@@ -311,6 +314,7 @@ alert_dialog.dismiss()
     fun submitData(view: View) {
 
         var b=bookingModel.from_date_time
+        var e=bookingModel.to_date_time
         val first = b[0]
         val two = b[1]
         val three = b[2]
@@ -323,21 +327,23 @@ alert_dialog.dismiss()
 
 
         var d=(Calendar.getInstance().timeInMillis.toString().toLong())/1000L
-        var f=d.toString()
-        val firs = f[0]
-        val tw = f[1]
-        val thre = f[2]
-        val fou = f[3]
-        val sbi = StringBuilder()
-        sbi.append(firs)
-        sbi.append(tw)
-        sbi.append(thre)
-        sbi.append(fou)
-        val l = sb.toString().toInt()
-        val i=l-1
-        val c = sbi.toString().toInt()
+//        var f=d.toString()
+//        val firs = f[0]
+//        val tw = f[1]
+//        val thre = f[2]
+//        val fou = f[3]
+//        val sbi = StringBuilder()
+//        sbi.append(firs)
+//        sbi.append(tw)
+//        sbi.append(thre)
+//        sbi.append(fou)
+//        val l = sb.toString().toInt()
+//        val i=l-1
+//        val c = sbi.toString().toInt()
 
-        if(l==c){
+        var difference=b.toInt()-d.toInt()
+        var p="l"
+        if(difference<=900){
 
             when (bookingModel.booking_status) {
 
@@ -356,8 +362,19 @@ alert_dialog.dismiss()
             }
 
         }
-        else
-            Toast.makeText(applicationContext,"You are not yet authorized for check before",Toast.LENGTH_SHORT).show()
+        else{
+            var alertDialog: AlertDialog? = activity?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setMessage(R.string.checkup)
+                    .setPositiveButton(R.string.ok,null
+                      )
+
+                // Create the AlertDialog object and return it
+                builder.create()
+            }
+            alertDialog!!.show()
+        }
+          //  Toast.makeText(applicationContext,"You are not yet authorized for check before",Toast.LENGTH_SHORT).show()
 
 
 

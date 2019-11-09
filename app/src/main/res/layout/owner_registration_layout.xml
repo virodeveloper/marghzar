@@ -373,6 +373,8 @@
 				android:visibility="@{user.data.isdifferentcity?View.VISIBLE:View.GONE}"
 				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 				android:layout_width="match_parent"
+
+
 				android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 			
 			
