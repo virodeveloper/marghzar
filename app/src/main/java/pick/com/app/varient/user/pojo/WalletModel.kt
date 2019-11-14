@@ -6,6 +6,7 @@ class WalletModel{
     var message: String? = null
     var description: String? = null
 
+
     var country_code = ""
     var contact_number = ""
     var first_name = ""

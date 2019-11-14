@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -25,6 +26,7 @@ import pick.com.app.MyApplication.Companion.alertDialog
 import pick.com.app.R
 import pick.com.app.base.BaseActivity
 import pick.com.app.base.PreviewActivity
+import pick.com.app.base.StaticWebUrlActivity
 import pick.com.app.base.model.PreviewModel
 import pick.com.app.base.model.ToolbarCustom
 import pick.com.app.base.model.ToolbarCustom.Companion.NoIcon
@@ -79,7 +81,7 @@ class BookingDetailsActivity : BaseActivity(), onItemSelect, OnRemoveImage {
 
             }
 
-            Urls.CHANGE_BOKING_STATUS->{
+            Urls.CANCELOWNER->{
                 val result = result as BookingModel
 
                 if (result.status == 1) {
@@ -277,6 +279,8 @@ alert_dialog.dismiss()
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.booking_detail_activity)
         bookingModel = intent.extras!!.get("model") as BookingModel.Data
+        var btn:AppCompatButton=findViewById(R.id.del)
+
         val bookingDetail =
             ToolbarCustom(ToolbarCustom.lefticon, getString(R.string.booking_detail), NoIcon, NoIcon)
         bookingModel.isdetailsshow=true
@@ -487,7 +491,7 @@ alert_dialog.dismiss()
 
 
         ApiServices<BookingModel>().callApi(
-            Urls.CHANGE_BOKING_STATUS,
+            Urls.CANCELOWNER,
             this,
             hashmap,
             BookingModel::class.java,
@@ -535,6 +539,16 @@ alert_dialog.dismiss()
         hashmap["rating"] = rating.toString()
 
         ApiServices<BookingModel>().callApi(Urls.RATING_USER, this, hashmap, BookingModel::class.java, true, activity)
+    }
+
+    fun delegate(view: View) {
+
+        var url:String="https://www.absher.sa/portal/landing.html"
+
+        startActivity(
+            Intent(this, StaticWebUrlActivity::class.java)
+                .putExtra("url",url+","+"Payment"))
+
     }
 
 

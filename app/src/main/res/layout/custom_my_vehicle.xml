@@ -318,7 +318,8 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/diesel"
+				tools:text="Diesel"
+				android:text='@{user.fuel_type}'
 				android:textSize="11sp" />
 		
 		

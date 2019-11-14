@@ -1,5 +1,6 @@
 package pick.com.app.varient.user.ui.fragment.booking
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.livinglifetechway.k4kotlin.core.onClick
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
+import kotlinx.android.synthetic.main.toolbar.*
 import pick.com.app.R
+import pick.com.app.Wallet
+import pick.com.app.base.BaseActivity
 import pick.com.app.base.CommonActivity
 import pick.com.app.databinding.MyBookingLayoutBinding
 import pick.com.app.interfaces.onResponse
@@ -91,6 +96,12 @@ class MyBookingFragmant : Fragment(), onResponse {
         view!!.tabs.setViewPager(viewPager)
         //binding.user= SessionManager.getLoginModel(activity)
         binding.invalidateAll()
+        activity!!.lasticon.onClick {
+
+            startActivity(Intent(BaseActivity.activity, Wallet::class.java).putExtra("method","noti"))
+
+
+        }
 
 
         // Attach the page change listener inside the activity

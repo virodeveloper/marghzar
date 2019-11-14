@@ -527,13 +527,15 @@ class VehicleModel {
             if (item.avail_name == "") {
 
 
-                showMessage(view, view.resources.getString(R.string.please_select_Discount_type))
-
-                return false
+                item.avail_name="none"
+//                showMessage(view, view.resources.getString(R.string.please_select_Discount_type))
+//
+//                return false
             } else if (item.avail_price == "") {
-                showMessage(view, view.resources.getString(R.string.please_select_Discount_price))
-
-                return false
+//                showMessage(view, view.resources.getString(R.string.please_select_Discount_price))
+//
+//                return false
+                item.avail_price="none"
             }
         }
 

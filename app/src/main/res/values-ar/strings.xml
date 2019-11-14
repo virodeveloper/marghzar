@@ -6,9 +6,13 @@
 	<string name="facebook_app_idOwner">395285601038826</string>
 	<string name="fb_login_protocol_scheme">fb361883434545014</string>
 	<string name="stringValue1">الملف الشخصي</string>
+
 	<string name="stringValue3">كلمة المرور</string>
+	<string name="delegate">تفويض للقيادة</string>
 	<string name="you_have">You have %.1f Points</string>
 	<string name="Liters">ليتر</string>
+	<string name="no_notification_available">لا يوجد إشعار متاح</string>
+
 	<string name="Refund_amount">إنه مبلغ تأمين سوف يتم رده إليك</string>
 
 	<string name="pay_amount">هذا المبلغ يشمل جميع الرسوم التي سيتعين عليك دفعها</string>

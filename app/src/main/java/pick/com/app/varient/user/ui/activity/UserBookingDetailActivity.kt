@@ -42,6 +42,7 @@ import pick.com.app.webservices.Urls
 import java.util.*
 
 class UserBookingDetailActivity : BookingBaseActivity(), onItemSelect {
+    var amount:String=""
     override fun getSelectedItem(o: Any) {
        if (o is PreviewModel){
             var previewModel=o
@@ -116,6 +117,12 @@ var myCalendar=Calendar.getInstance()
 
 
             }
+            Urls.GETPAYABLE->{
+                var model=result as BookingModel
+                amount=model.payable_amount
+
+
+            }
             Urls.FINALPAYMENT->{
 
                 val result = result as BookingModel
@@ -187,6 +194,8 @@ var myCalendar=Calendar.getInstance()
         binding.toolbar = bookingDetail
         bookingModel = intent.extras!!.get("model") as BookingModel.Data
         binding.user = bookingModel
+
+        get_payble(bookingModel)
         if(bookingModel.booking_status==5){
             paylist.visibility=VISIBLE
         }
@@ -235,7 +244,7 @@ var myCalendar=Calendar.getInstance()
         first_button.setOnClickListener {
             when(bookingModel.booking_status){
                 1 -> {
-                    downlaodPDF(bookingModel.upload_url+""+bookingModel.booking_detail_pdf)
+                    downlaodPDF(bookingModel)
                 }
                 2 -> {
                     changeStatus("3", bookingModel)
@@ -257,7 +266,7 @@ var myCalendar=Calendar.getInstance()
                 }
 
                 9 ->{
-                    startActivity(Intent(this, WalletActivity::class.java).putExtra("booking_id", bookingModel.booking_id))
+                    startActivity(Intent(this, WalletActivity::class.java).putExtra("booking_id", bookingModel.booking_id).putExtra("payment_type", "i").putExtra("amount", amount))
                 }
 
             }
@@ -333,6 +342,16 @@ var myCalendar=Calendar.getInstance()
         hashmap["report_message"] = message_report
 
         ApiServices<BookingModel>().callApi(Urls.USER_REPORT, this, hashmap, BookingModel::class.java, true, activity)
+    }
+    fun get_payble(data : BookingModel.Data)
+    {
+        val hashmap = HashMap<String, Any>()
+
+        hashmap["booking_id"] = data.booking_id!!
+
+
+        ApiServices<BookingModel>().callApi(Urls.GETPAYABLE, this, hashmap, BookingModel::class.java, true, activity)
+
     }
 
     fun shareDetails(view:View){
@@ -520,8 +539,18 @@ var myCalendar=Calendar.getInstance()
         dialog.show()
     }
 
-    fun downlaodPDF(url:String){
-        ApiServices<LoginModel>().PdfDownlaod(url,this)
+    fun downlaodPDF(data: BookingModel.Data){
+       // ApiServices<LoginModel>().PdfDownlaod(url,this)
+
+        var urli:String="http://pick.com.sa/api/topdf/"+data.booking_id!!+".pdf"
+        ApiServices<LoginModel>().PdfDownlaod(urli,this)
+
+//        val hashmap = HashMap<String, Any>()
+//        hashmap["booking_id"] = data.booking_id!!
+//
+//
+//        ApiServices<BookingModel>().callApi(Urls.PDF, this, hashmap, BookingModel::class.java, true, activity)
+
     }
 
     fun extendVehicleBooking(data : BookingModel.Data, date_time : String) {

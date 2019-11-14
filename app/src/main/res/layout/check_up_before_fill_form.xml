@@ -64,11 +64,11 @@
 						android:focusableInTouchMode="true"
 						android:gravity="right|center_vertical"
 						android:textSize="13sp"
-						android:hint="@string/Liters" />
+						android:hint="Liters" />
 					
 					<TextView
 						android:layout_width="wrap_content"
-						android:text="@string/Liters"
+						android:text="Liters"
 						android:textSize="13sp"
 						android:paddingStart="5dp"
 						android:paddingEnd="5dp"

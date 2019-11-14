@@ -138,6 +138,7 @@ class BookingModel : Serializable {
     var status = 0
     private var message: String? = null
     var description = ""
+    var payable_amount:String=""
     private var data: List<Data>? = null
 
 

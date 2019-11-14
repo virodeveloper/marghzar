@@ -206,20 +206,14 @@
 							android:background="@drawable/rect_view"
 							android:layout_marginTop="10dp"
 							android:layout_marginRight="20dp">
-							
-							<TextView
+
+							<com.hbb20.CountryCodePicker
 								android:layout_width="wrap_content"
-								tool:text="+966 -"
-								android:text='@{"+"+model.country_code+" -"}'
-								
-								android:paddingEnd="10dp"
-								android:paddingStart="10dp"
-								
-								android:onClick="@{(theView) -> redirection.goToCountryCode()}"
-								
-								android:textColor="#353535"
-								android:layout_height="wrap_content" />
-							
+								android:layout_height="match_parent"
+								android:id="@+id/cou"
+								app:ccp_defaultNameCode="SA"
+
+								/>
 							<pick.com.app.uitility.custom.CustomEditText
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"

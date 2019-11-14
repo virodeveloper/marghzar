@@ -191,7 +191,7 @@
     <string name="driving_license_number_fill">Driving License Number</string>
     <string name="booking_detail">Booking Detail</string>
     <string name="cancel_booking">Cancel Booking</string>
-    <string name="please_select_to_time">Please select to time waqas</string>
+    <string name="please_select_to_time">Please select to time</string>
     <string name="please_select_to_date">Please select to date</string>
     <string name="please_select_from_time">Please select from time</string>
     <string name="please_select_from_date">Please select from date and time</string>
@@ -222,6 +222,7 @@
     <string name="extended_booking">Extended Booking</string>
     <string name="approved_and_pick_up">Approved &amp; Pick up</string>
     <string name="download_pdf">Download PDF</string>
+    <string name="delegate">Delegation To Drive</string>
     <string name="pay_now">Pay Now</string>
     <string name="rejected_by_vehicle_owner">Rejected by vehicle owner</string>
     <string name="check_up_after_request">Check up after request</string>
@@ -257,14 +258,14 @@
     <string name="extend_date_empty">Please select extend date</string>
     <string name="extend_time_empty">Please select extend time</string>
 
-    <string name="sarwithvalue">/ %s Sar</string>
+    <string name="sarwithvalue">/ %s SAR</string>
     <string name="amountperday">(%s SAR/Day)</string>
     <string name="free_km_with_value">free KM %s km</string>
     <string name="excess_value">Excess %s SAR/Km</string>
     <string name="sar_day_text">SAR/Day</string>
 
     <string name="freekmexcess">Free Km %s km,Excess %s SAR/Km</string>
-    <string name="amointinSar"> %s Sar</string>
+    <string name="amointinSar"> %s SAR</string>
     <string name="Liters"> %s Liters</string>
 
 
@@ -292,9 +293,9 @@
     <string name="please_enter_km">Please enter km</string>
     <string name="please_enter_after_check_up_fuel_amt">Please enter after check up fuel amount</string>
     <string name="please_enter_after_check_up_km">Please enter after check up km</string>
-    <string name="please_select_Discount_type">Please select bulk type</string>
+    <string name="please_select_Discount_type">Please select Long Term Discounts</string>
     <string name="settlement">Settlement</string>
-    <string name="please_select_Discount_price">Please enter bulk price</string>
+    <string name="please_select_Discount_price">Please enter Discount price</string>
     <string name="select_a_country">SELECT A COUNTRY</string>
     <string name="please_select_from_date_and_time">Please select from date and time</string>
     <string name="vehicle_brand_model">Vehicle Brand and Model</string>
@@ -390,7 +391,7 @@
     <string name="update_account">Update Account</string>
     <string name="add_account">Add Account</string>
     <string name="pick_wallet">Pick Wallet</string>
-    <string name="credit_card_detials">Credit Card Detials</string>
+    <string name="credit_card_detials">Credit Card Details</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="billing_address">Billing Address</string>

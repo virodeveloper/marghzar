@@ -51,7 +51,7 @@ companion object {
     var message: String? = null
     var data: List<Data>? = null
 
-    class Data :Serializable{
+     class Data :Serializable{
         /**
          * location_address : A-68,69 Sunder Singh Bhandari Nagar, Swej Farm, Sodala, Jaipur, Rajasthan 302019, India
          * location_latitude : 26.8913782
@@ -67,6 +67,9 @@ companion object {
         var message: String? = null
         var data=Vehicles()
         var location_address: String? = null
+        var wallet_amount: String? = null
+        var descriptions: String? = null
+        var updated_on: String? = null
         var location_latitude: Double? = null
         var location_longitude: Double? = null
         var from_date_time: String? = null
@@ -250,6 +253,7 @@ fun isfav(data:Vehicles):Boolean{
                 }
             var refueling_charge: String? = null
             var payable_amount: String? = null
+            var delivery_at_door: String? = null
 
 
             var refundable_charge: String? = null

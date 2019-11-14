@@ -1,9 +1,12 @@
 package pick.com.app.varient.owner.activity
 
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.adapter.UniverSalBindAdapter
@@ -23,10 +26,14 @@ import pick.com.app.uitility.session.SessionManager
 import pick.com.app.varient.owner.pojo.VehicleModel
 import pick.com.app.webservices.ApiServices
 import pick.com.app.webservices.Urls
+import java.io.BufferedOutputStream
 import java.io.File
+import java.io.FileOutputStream
 
 
 class AddNewVehicleActivity : BaseActivity() , onVehicleSpinner {
+    private val IMG_REQUEST = 2
+  lateinit  var modell:VehicleModel.Data
     override fun getSpinnerSelectedItem(model: Any?, url: String?) {
         when(url){
 
@@ -224,20 +231,31 @@ this.bulkAvailability=bulkAvailability
     }
 
     fun getInsurancePolocy(view: View, model: VehicleModel.Data) {
-        ChooserDialog().with(view.context)
-            .withFilter(false, false, "jpg", "jpeg", "png", "pdf", "doc", "docx")
-            .withStartFile(Environment.getExternalStorageDirectory().absolutePath)
 
-            .withChosenListener { path, _ ->
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select File"), IMG_REQUEST)
 
-                addNewVehicleActivity.model!!.insurance_policyFile = File(path)
-                addNewVehicleActivity.model!!.insurance_policy=File(path).name
-                model.isLisancePreview = true
-               addNewVehicleActivity.invalidateAll()
-                insurance_image.setImageBitmap(generateImageFromPdf(Uri.fromFile(model.insurance_policyFile)))
-            }
-            .build()
-            .show()
+        model.isLisancePreview = true
+
+
+
+
+//        ChooserDialog().with(view.context)
+//            .withFilter(false, false, "jpg", "jpeg", "png", "pdf", "doc", "docx")
+//            .withStartFile(Environment.getExternalStorageDirectory().absolutePath)
+//
+//            .withChosenListener { path, _ ->
+//
+//                addNewVehicleActivity.model!!.insurance_policyFile = File(path)
+//                addNewVehicleActivity.model!!.insurance_policy=File(path).name
+//                model.isLisancePreview = true
+//               addNewVehicleActivity.invalidateAll()
+//                insurance_image.setImageBitmap(generateImageFromPdf(Uri.fromFile(model.insurance_policyFile)))
+//            }
+//            .build()
+//            .show()
 
     }
 
@@ -278,6 +296,34 @@ this.bulkAvailability=bulkAvailability
         getBulkAvalibity()
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==IMG_REQUEST && resultCode==RESULT_OK && data!=null
+            && data.getData()!=null){
+
+
+            var bitmap:Bitmap
+
+
+
+            var path:Uri=data.data
+
+            val file = File(path.path)
+//            val os = BufferedOutputStream(FileOutputStream(file))
+//
+//            bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),path)
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+//            os.close()
+            addNewVehicleActivity.model!!.insurance_policyFile = file
+                addNewVehicleActivity.model!!.insurance_policy=file.name
+
+
+
+               addNewVehicleActivity.invalidateAll()
+
+        }
     }
 
 

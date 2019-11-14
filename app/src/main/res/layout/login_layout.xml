@@ -55,7 +55,10 @@
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:id="@+id/cou"
-				app:ccp_defaultNameCode="US"
+				android:background="@null"
+				app:ccp_textSize="13sp"
+				app:ccp_contentColor="@color/ef_white"
+				app:ccp_defaultNameCode="SA"
 
 				/>
 

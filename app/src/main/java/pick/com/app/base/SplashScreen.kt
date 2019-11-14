@@ -14,13 +14,16 @@ import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.widget.VideoView
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.BitmapRequestListener
 import com.crashlytics.android.Crashlytics
+import com.livinglifetechway.k4kotlin.core.toast
 import io.fabric.sdk.android.Fabric
 import pick.com.app.BuildConfig
+import pick.com.app.R
 import pick.com.app.service.OnClearFromRecentService
 import pick.com.app.uitility.helpper.Redirection
 import pick.com.app.uitility.session.SessionManager
@@ -152,9 +155,25 @@ SplashScreen : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Fabric.with(this,  Crashlytics());
+
         setContentView(pick.com.app.R.layout.splash_layout)
         startService(Intent(baseContext, OnClearFromRecentService::class.java))
 
+        val videoHolder = findViewById<VideoView>(R.id.videoview)
+
+
+        try {
+            // VideoView videoHolder = new VideoView(thisetContentView(videoView);
+            //videoHolder.setVideoURI(uri);
+            val video = Uri.parse("android.resource://" + packageName + "/" + R.raw.pick)
+            videoHolder.setVideoURI(video)
+            videoHolder.requestFocus()
+
+            videoHolder.setOnCompletionListener { jump() }
+            videoHolder.start()
+        } catch (ex: Exception) {
+            jump()
+        }
      //  shareItem("http://efdreams.com/data_images/dreams/face/face-03.jpg")
 
         var language =   Locale.getDefault().language
@@ -215,8 +234,12 @@ if (intent.getStringExtra("lang")!=null)
                 Redirection().goToHome(true, this, null)
 
             finish()
-        }, 700)
+        }, 3000)
 
 
+    }
+
+    private fun jump() {
+        activity.toast("WELCOME")
     }
 }

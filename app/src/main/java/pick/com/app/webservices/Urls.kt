@@ -71,6 +71,12 @@ class Urls {
         var BANK="banks"
         var FINALPAYMENT="finalPayment"
         var REQUEST="request"
+        var GETPAYABLE="payable"
+        var USERWALLET="user_wallet"
+        var Rejectstatus="rejectStatus"
+        var CANCELOWNER="cancelOwner"
+        var PDF="dfile"
+        var GETNOTIFICATION="get_notification_list"
 
     }
 

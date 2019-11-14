@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.hbb20.CountryCodePicker
 import com.livinglifetechway.k4kotlin.core.onClick
 import com.paytabs.paytabs_sdk.payment.ui.activities.PayTabActivity
 import com.paytabs.paytabs_sdk.utils.PaymentParams
@@ -34,6 +35,7 @@ class AddWalletActivity : BaseActivity() {
     private lateinit var binding : AddUserPaymentScreenBinding
     private var bookingId : String= ""
     private var payable_amount : String= ""
+  lateinit  var co:CountryCodePicker
     private var add_amount : String= ""
     private lateinit var toolbarCustom: ToolbarCustom
 
@@ -72,6 +74,7 @@ class AddWalletActivity : BaseActivity() {
         bookingId = intent.getStringExtra("booking_id")
         payable_amount = intent.getStringExtra("amount")
         add_amount = intent.getStringExtra("amount")
+        co=findViewById(R.id.cou)
         binding.payableAmount.setText(payable_amount + " SAR")
         userWallet()
     }
@@ -108,7 +111,7 @@ class AddWalletActivity : BaseActivity() {
             }
         }
         else
-            Toast.makeText(this, "Something Gone waqas Wrong", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Something Gone Wrong", Toast.LENGTH_LONG).show();
 
 
 
@@ -169,7 +172,7 @@ class AddWalletActivity : BaseActivity() {
            intent.putExtra(PaymentParams.AMOUNT, payable_amount.toDouble())
 
            intent.putExtra(PaymentParams.CURRENCY_CODE, "SAR")
-           intent.putExtra(PaymentParams.CUSTOMER_PHONE_NUMBER, binding.model!!.country_code+binding.model!!.contact_number)
+           intent.putExtra(PaymentParams.CUSTOMER_PHONE_NUMBER, co.selectedCountryCode +binding.model!!.contact_number)
            intent.putExtra(PaymentParams.CUSTOMER_EMAIL, binding.model!!.email)
            intent.putExtra(PaymentParams.ORDER_ID, bookingId)
            intent.putExtra(PaymentParams.PRODUCT_NAME, "Product 1, Product 2")

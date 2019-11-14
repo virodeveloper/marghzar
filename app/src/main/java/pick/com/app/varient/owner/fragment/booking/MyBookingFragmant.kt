@@ -1,5 +1,6 @@
 package pick.com.app.varient.owner.fragment.booking
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,13 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.livinglifetechway.k4kotlin.core.onClick
+import com.livinglifetechway.k4kotlin.core.toast
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import pick.com.app.R
+import pick.com.app.Wallet
+import pick.com.app.base.BaseActivity
 import pick.com.app.base.BaseFragment
 import pick.com.app.databinding.MyBookingLayoutBinding
 import pick.com.app.interfaces.onResponse
@@ -81,6 +85,7 @@ super.onSucess(result, methodtype)
         }
         activity!!.lasticon.onClick {
 
+            startActivity(Intent(BaseActivity.activity, Wallet::class.java).putExtra("method","noti"))
 
 
         }

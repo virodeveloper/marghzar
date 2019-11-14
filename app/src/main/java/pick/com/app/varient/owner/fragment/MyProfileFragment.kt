@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.livinglifetechway.k4kotlin.core.onClick
+import com.livinglifetechway.k4kotlin.core.toast
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 import kotlinx.android.synthetic.main.profile_top_layout.*
@@ -23,6 +24,9 @@ import kotlinx.android.synthetic.main.profile_top_layout.view.addToWallet
 import kotlinx.android.synthetic.main.toolbar.*
 import pick.com.app.Constants
 import pick.com.app.R
+import pick.com.app.Wallet
+import pick.com.app.WalletTransaction
+import pick.com.app.base.BaseActivity
 import pick.com.app.base.CommonActivity
 import pick.com.app.base.StaticWebUrlActivity
 import pick.com.app.databinding.ActivityProfileBinding
@@ -154,6 +158,17 @@ class MyProfileFragment : Fragment(), onResponse {
 
         activity!!.addToWallet.onClick {
            showAddWalletDialog()
+        }
+        activity!!.wallet_logo.onClick {
+
+            startActivity(Intent(BaseActivity.activity, Wallet::class.java).putExtra("method","wall"))
+
+        }
+        activity!!.lasticon.onClick {
+
+            startActivity(Intent(BaseActivity.activity, Wallet::class.java).putExtra("method","noti"))
+
+
         }
     }
 

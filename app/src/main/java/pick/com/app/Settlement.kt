@@ -3,6 +3,7 @@ package pick.com.app
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,15 +11,18 @@ import android.view.View
 import android.widget.*
 import okhttp3.ResponseBody
 import pick.com.app.base.BaseActivity
+import pick.com.app.base.StaticWebUrlActivity
 import pick.com.app.interfaces.onResponse
 import pick.com.app.uitility.session.SessionManager
 import pick.com.app.varient.user.pojo.FilterModel.Companion.hashmap
 import pick.com.app.varient.user.pojo.RegistrationModel
+import pick.com.app.varient.user.pojo.WalletModel
 import pick.com.app.webservices.ApiServices
 import pick.com.app.webservices.Urls
 
 class Settlement : AppCompatActivity(), onResponse {
    lateinit var bank:String
+    lateinit var wall:String
   lateinit  var categories:Array<String?>
     override fun <T : Any?> onSucess(result: T, methodtype: String?) {
         if (methodtype == Urls.BANK) {
@@ -42,34 +46,54 @@ class Settlement : AppCompatActivity(), onResponse {
         if (methodtype == Urls.SETTLEMENT) {
             Toast.makeText(applicationContext,"Request Sended",Toast.LENGTH_SHORT).show()
 
+            finish()
+        }
+        else if(methodtype == Urls.USER_WALLET) {
+            var model = result as WalletModel
+            wall=model.wallet_amount
+
         }
         if (methodtype == Urls.REQUEST) {
             var model = result as Model
             if(model.status.equals("0")){
-                setContentView(R.layout.activity_settlement)
-                var alertDialog: AlertDialog? = BaseActivity.activity?.let {
-                    val builder = AlertDialog.Builder(it)
-                    builder.setMessage(R.string.checkup)
-                        .setPositiveButton(R.string.ok, DialogInterface.OnClickListener { dialog, id ->
-                            finish()
-                        })
 
+                val builder = AlertDialog.Builder(this@Settlement)
 
-                    // Create the AlertDialog object and return it
-                    builder.create()
+                builder.setTitle("Settlement Request")
+
+                builder.setMessage("You already have a request in process ")
+
+                builder.setPositiveButton("OK"){dialog, which ->
+
+                    finish()
                 }
-                alertDialog!!.show()
+                val dialog: AlertDialog = builder.create()
+                  dialog.show()
+
             }
             else{
-                setContentView(R.layout.activity_settlement)
+//                setContentView(R.layout.activity_settlement)
+//
+//                startactivity()
+                var userid=SessionManager.getLoginModel(this@Settlement).data.user_id
+                startActivity(
+                    Intent(this, StaticWebUrlActivity::class.java)
+                        .putExtra("url","http://pick.com.sa/user-profile-w/"+userid+","+"Payment"))
+                finish()
 
-                startactivity()
             }
 
         }
     }
 
+    fun userWallet(){
+        val hashmap = HashMap<String, Any>()
+        hashmap["user_id"] = SessionManager.getLoginModel(this).data.user_id
+        ApiServices<WalletModel>().callApi(Urls.USER_WALLET, this, hashmap, WalletModel::class.java,
+            true, this)
+    }
     private fun startactivity() {
+
         editText=findViewById(R.id.amount)
         editText2=findViewById(R.id.baccount)
         editText3=findViewById(R.id.iban)
@@ -117,6 +141,7 @@ class Settlement : AppCompatActivity(), onResponse {
         super.onCreate(savedInstanceState)
 
 
+        userWallet()
         val hashma = HashMap<String, Any>()
         hashma["user_id"] =SessionManager.getLoginModel(this@Settlement).data.user_id
         ApiServices<Model>().callApi(
@@ -131,30 +156,39 @@ class Settlement : AppCompatActivity(), onResponse {
     }
 
     fun dosettlement(view: View) {
-        val hashmap = HashMap<String, Any>()
-        hashmap["user_id"] = SessionManager.getLoginModel(BaseActivity.activity).data.user_id
-        hashmap["amount"] =editText.text.toString()
-        hashmap["iban"] =editText3.text.toString()
-        hashmap["bank_account_number"] =editText2.text.toString()
-        hashmap["bank_name"] =bank
-        hashmap["account_name"] =editText4.text.toString()
-//        val sharedPreferences: SharedPreferences = this.getSharedPreferences("Mupre", Context.MODE_PRIVATE)
-//
-//        var wall=sharedPreferences.getString("wallet","100")
-//        if (wall.toInt()>editText.text.toString().toInt()){
-//
-//        }
-//        else
-//            Toast.makeText(applicationContext,"you cannot send request",Toast.LENGTH_SHORT).show()
 
-        ApiServices<Model>().callApi(
-            Urls.SETTLEMENT,
-            this,
-            hashmap,
-            Model::class.java,
-            true,
-            this
-        )
+
+        if(wall.toDouble()>=editText.text.toString().toDouble()){
+
+            val hashmap = HashMap<String, Any>()
+            hashmap["user_id"] = SessionManager.getLoginModel(BaseActivity.activity).data.user_id
+            hashmap["amount"] =editText.text.toString()
+            hashmap["iban"] =editText3.text.toString()
+            hashmap["bank_account_number"] =editText2.text.toString()
+            hashmap["bank_name"] =bank
+            hashmap["account_name"] =editText4.text.toString()
+
+            ApiServices<Model>().callApi(
+                Urls.SETTLEMENT,
+                this,
+                hashmap,
+                Model::class.java,
+                true,
+                this
+            )
+        }
+        else{
+            val builder = AlertDialog.Builder(this@Settlement)
+
+            builder.setTitle("Settlement Request")
+
+            builder.setMessage("Please Enter Correct amount").setPositiveButton("OK",null)
+
+
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
 
 
     }

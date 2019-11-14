@@ -134,7 +134,9 @@ class RegistrationModel : Serializable , BaseObservable {
         var dl_image: Any = ""
         var user_type: String = "oi"
         var login_type: String = ""
-        var otp_number: String = ""
+
+        var new_otp: String = ""
+        var otp_number: String = new_otp
         var detail_id: String = ""
         var deliver_user_door: Int = 1
         var wallet_amount = "";

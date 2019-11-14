@@ -2,6 +2,9 @@ package pick.com.app.varient.user.ui.fragment.booking
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,14 +15,19 @@ import androidx.databinding.DataBindingUtil
 import com.adapter.UniverSalBindAdapter
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.customListAdapter
+import com.livinglifetechway.k4kotlin.core.onClick
 import com.livinglifetechway.k4kotlin.core.toast
 import im.delight.android.location.SimpleLocation
+import kotlinx.android.synthetic.main.toolbar.*
 import pick.com.app.R
+import pick.com.app.Wallet
+import pick.com.app.base.BaseActivity
 import pick.com.app.base.BaseFragment
 import pick.com.app.base.model.LocationModel
 import pick.com.app.databinding.SearchBookingActivityBinding
 import pick.com.app.interfaces.onLocationFromMap
 import pick.com.app.uitility.helpper.Redirection
+import pick.com.app.uitility.session.SessionManager
 import pick.com.app.varient.user.pojo.FilterModel
 import pick.com.app.varient.user.pojo.RegistrationModel
 import pick.com.app.varient.user.pojo.RegistrationModel.Data.Locations.Companion.isalreadyClickformap
@@ -129,6 +137,12 @@ class HomeFragment : BaseFragment(), onLocationFromMap {
     }
     lateinit var binding: SearchBookingActivityBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        var id=SessionManager.getLoginModel(activity).data.user_id
+        val sharedPreferences: SharedPreferences = activity!!.getSharedPreferences("Mupre", Context.MODE_PRIVATE)
+        val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+        editor.putString("id",id)
+        editor.apply()
 
 
         binding = DataBindingUtil.inflate(
@@ -354,6 +368,12 @@ class HomeFragment : BaseFragment(), onLocationFromMap {
         val passiveMode = false
         val updateIntervalInMilliseconds = (10 * 60 * 500).toLong()
         val requireNewLocation = false
+        activity!!.lasticon.onClick {
+
+            startActivity(Intent(BaseActivity.activity, Wallet::class.java).putExtra("method","noti"))
+
+
+        }
 
         simplelocation = SimpleLocation(
             activity,

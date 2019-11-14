@@ -25,6 +25,8 @@
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:hint="Bank name"
+            android:spinnerMode="dialog"
+            android:prompt="@string/confirm"
             android:layout_marginTop="@dimen/_30sdp"
             android:id="@+id/bankname"/>
         <EditText

@@ -58,7 +58,7 @@
 				android:hint="@string/otp_code"
 				android:inputType="number"
 				android:padding="10dp"
-				android:text="@={user.data.otp_number}"
+				android:text="@={user.data.new_otp}"
 
 				android:maxLength="4"
 				android:textColor="@color/ef_white"

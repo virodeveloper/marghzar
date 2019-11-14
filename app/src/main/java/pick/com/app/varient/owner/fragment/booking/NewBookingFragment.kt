@@ -64,7 +64,7 @@ class NewBookingFragment : BaseFragment(), UniverSalBindAdapter.ItemAdapterListe
                 })*/
             }
 
-            Urls.CHANGE_BOKING_STATUS -> {
+            Urls.Rejectstatus -> {
                 var result = result as BookingModel
 
                 if (result.status == 1) {
@@ -232,7 +232,7 @@ class NewBookingFragment : BaseFragment(), UniverSalBindAdapter.ItemAdapterListe
         adpater!!.arrraylist.remove(data)
 
         ApiServices<BookingModel>().callApi(
-            Urls.CHANGE_BOKING_STATUS,
+            Urls.Rejectstatus,
             this,
             hashmap,
             BookingModel::class.java,
